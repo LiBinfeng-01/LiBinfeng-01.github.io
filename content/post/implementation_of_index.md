@@ -1,3 +1,10 @@
+---
+title: "How to implement index scan in cso-demo?"
+date: 2023-11-19T20:00:00+08:00
+author: LiBinfeng
+draft: false
+---
+
 How to implement index scan in cso-demo?
 
 # User view
@@ -14,21 +21,23 @@ create hash index index_2 on test(c2);
 select c1 + c3 from test where c1 = 5000 and c2 = 101 order by c2;
 ```
 
-# index types
+# Index Types
 https://blog.csdn.net/qq_42768234/article/details/131458308
 
-# implementation
+# Implementation
+
 ## implementation of gporca
+
 ### information flow
 
-metadata -> LogicalSelect(Exploration) -> LogicalIndexGet(Exploration) -> PhysicalIndexGet(implementation)  
+`metadata -> LogicalSelect(Exploration) -> LogicalIndexGet(Exploration) -> PhysicalIndexGet(implementation) `
 
-why orca need to add logical index get? logicalGet -> physicaltablescan / physicalindexscan
+why orca need to add logical index get? `logicalGet -> physicaltablescan / physicalindexscan`
 
 ### metadata define
-```
+```c++
 IMDIndex
-// object type
+	// object type
 	virtual Emdtype
 	MDType() const
 	{
@@ -74,19 +83,24 @@ IMDIndex
 	static const CWStringConst *GetDXLStr(EmdindexType index_type);
 
 ```
+
 ### work flow
-```
+
+```c++
 CXformSelect2IndexGet::Transform
 ```
 
 ### scalar properties derive(required scalar properties)
-```
+
+```c++
 // derive the scalar and relational properties to build set of required columns
-	CColRefSet *pcrsOutput = pexpr->DeriveOutputColumns();
-	CColRefSet *pcrsScalarExpr = pexprScalar->DeriveUsedColumns();
+CColRefSet *pcrsOutput = pexpr->DeriveOutputColumns();
+CColRefSet *pcrsScalarExpr = pexprScalar->DeriveUsedColumns();
 ```
+
 ### index matching
-```
+
+```c++
 CXformUtils::FIndexApplicable core-> key matching
 ```
 
@@ -97,32 +111,42 @@ optimization(enforcer + cost) choose indexscan
 ## What should we do?
 
 ## target 1 
+
 when add a new type of index, we should not change previous behavior of method. trait (method needed)
 
 ## target 2 
+
 do we need index in exploration? because of statistic information derive? 
-implementation -> logicalget2physicalindexscan -> statistic derivation.
+
+`implementation -> logicalget2physicalindexscan -> statistic derivation`
+
 logicalIndexGet
 
 ## target 3
-do we need logicalSelect?     logicalScalarOperator(logicalGetOperator)  pattern matching
+
+do we need logicalSelect?  
+
+`logicalScalarOperator(logicalGetOperator)`
+
+pattern matching
 
 ## target 4
-logicalProperties(column, expression) scalarOperator ExprId
 
-## todoList
+`logicalProperties(column, expression) scalarOperator ExprId`
 
-metadata -> metadata of index trait (linbo)
+## todo list
 
-exploration -> project(a + b scalarOperation list)
-- 1、logicalProperties（LiBinfeng_01） scalarOperator(davidli2010) 
-- 2、statistic derivation （linbo）
-- 3、indexmatching（LiBinfeng_01） 
-- 4、logicalIndexScan（LiBinfeng_01）interface/multiple indexscan in same table
+`metadata -> metadata of index trait` (linbo)
 
-implementation -> logical2physical（LiBinfeng_01）
+`exploration -> project(a + b scalarOperation list)`
+1. logicalProperties（LiBinfeng_01） scalarOperator(davidli2010) 
+2. statistic derivation （linbo）
+3. indexmatching（LiBinfeng_01） 
+4. logicalIndexScan（LiBinfeng_01）interface/multiple indexscan in same table
 
-optimization -> compute cost and choose index scan, physicalRequireProperties（LiBinfeng_01）
+`implementation -> logical2physical`（LiBinfeng_01）
+
+`optimization -> compute cost and choose index scan, physicalRequireProperties`（LiBinfeng_01）
 
 
 
