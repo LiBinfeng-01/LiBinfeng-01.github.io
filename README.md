@@ -1,3 +1,3 @@
-This is Nothing New Labs blogs repo.
+This is LiBinfeng blogs repo.
 
-See [the blogs site](https://nothing-new-labs.github.io).
+See [the blogs site](https://LiBinfeng-01.github.io).
