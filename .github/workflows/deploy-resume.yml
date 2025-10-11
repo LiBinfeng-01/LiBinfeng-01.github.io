@@ -59,10 +59,17 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
 
+      - name: 准备部署文件
+        run: |
+          # 将构建的文件移动到根目录
+          cp -r resume-site/dist/* ./
+          # 创建 .nojekyll 文件以避免 Jekyll 处理
+          touch .nojekyll
+
       - name: 上传构建产物
         uses: actions/upload-pages-artifact@v3
         with:
-          path: resume-site/dist
+          path: .
 
   # 部署任务
   deploy:
