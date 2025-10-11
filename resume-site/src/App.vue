@@ -1,0 +1,214 @@
+<template>
+  <div id="app">
+    <header class="header">
+      <div class="container">
+        <h1 class="name">{{ personalInfo.name }}</h1>
+        <p class="title">{{ personalInfo.title }}</p>
+        <div class="contact-info">
+          <span v-for="contact in personalInfo.contact" :key="contact.type" class="contact-item">
+            <i :class="contact.icon"></i>
+            {{ contact.value }}
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <div class="cards-grid">
+          <!-- 个人简介卡片 -->
+          <Card title="个人简介" icon="👤">
+            <p>{{ personalInfo.summary }}</p>
+          </Card>
+
+          <!-- 技能卡片 -->
+          <Card title="技能专长" icon="💻">
+            <div class="skills-grid">
+              <div v-for="skill in skills" :key="skill.category" class="skill-category">
+                <h4>{{ skill.category }}</h4>
+                <div class="skill-tags">
+                  <span v-for="skillName in skill.items" :key="skillName" class="skill-tag">
+                    {{ skillName }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          <!-- 工作经验卡片 -->
+          <Card title="工作经验" icon="💼">
+            <div class="experience-list">
+              <div v-for="job in experience" :key="job.id" class="experience-item">
+                <div class="job-header">
+                  <h4>{{ job.position }}</h4>
+                  <span class="company">{{ job.company }}</span>
+                  <span class="duration">{{ job.duration }}</span>
+                </div>
+                <p class="description">{{ job.description }}</p>
+                <ul v-if="job.responsibilities" class="responsibilities">
+                  <li v-for="responsibility in job.responsibilities" :key="responsibility">
+                    {{ responsibility }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </Card>
+
+          <!-- 教育背景卡片 -->
+          <Card title="教育背景" icon="🎓">
+            <div class="education-list">
+              <div v-for="edu in education" :key="edu.id" class="education-item">
+                <h4>{{ edu.degree }}</h4>
+                <p class="school">{{ edu.school }}</p>
+                <p class="period">{{ edu.period }}</p>
+                <p v-if="edu.description" class="description">{{ edu.description }}</p>
+              </div>
+            </div>
+          </Card>
+
+          <!-- 项目经验卡片 -->
+          <Card title="项目经验" icon="🚀">
+            <div class="project-list">
+              <div v-for="project in projects" :key="project.id" class="project-item">
+                <div class="project-header">
+                  <h4>{{ project.name }}</h4>
+                  <span class="project-period">{{ project.period }}</span>
+                </div>
+                <p class="project-description">{{ project.description }}</p>
+                <div v-if="project.technologies" class="tech-tags">
+                  <span v-for="tech in project.technologies" :key="tech" class="tech-tag">
+                    {{ tech }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          <!-- 证书奖项卡片 -->
+          <Card title="证书奖项" icon="🏆">
+            <div class="awards-list">
+              <div v-for="award in awards" :key="award.id" class="award-item">
+                <h4>{{ award.name }}</h4>
+                <p class="award-issuer">{{ award.issuer }}</p>
+                <p class="award-date">{{ award.date }}</p>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 {{ personalInfo.name }}. 保留所有权利。</p>
+      </div>
+    </footer>
+  </div>
+</template>
+
+<script>
+import Card from './components/Card.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Card
+  },
+  data() {
+    return {
+      personalInfo: {
+        name: '张三',
+        title: '前端开发工程师',
+        summary: '拥有5年前端开发经验，熟练掌握Vue.js、React、Node.js等技术栈，具备丰富的项目经验和团队协作能力。热爱技术，持续学习新技术，致力于创造优秀的用户体验。',
+        contact: [
+          { type: 'email', icon: '📧', value: 'zhangsan@example.com' },
+          { type: 'phone', icon: '📱', value: '+86 138-0000-0000' },
+          { type: 'location', icon: '📍', value: '北京市朝阳区' },
+          { type: 'github', icon: '🐙', value: 'github.com/zhangsan' }
+        ]
+      },
+      skills: [
+        {
+          category: '前端技术',
+          items: ['Vue.js', 'React', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Sass', 'Webpack', 'Vite']
+        },
+        {
+          category: '后端技术',
+          items: ['Node.js', 'Express', 'MongoDB', 'MySQL', 'Redis', 'RESTful API']
+        },
+        {
+          category: '工具与框架',
+          items: ['Git', 'Docker', 'Linux', 'AWS', 'Nginx', 'Jest', 'Cypress']
+        }
+      ],
+      experience: [
+        {
+          id: 1,
+          position: '高级前端开发工程师',
+          company: '科技有限公司',
+          duration: '2021.03 - 至今',
+          description: '负责公司核心产品的前端开发工作，带领团队完成多个重要项目。',
+          responsibilities: [
+            '负责公司主要产品的前端架构设计和开发',
+            '带领3人前端团队，指导初级开发人员',
+            '优化前端性能，提升用户体验',
+            '参与产品需求分析和技术方案制定'
+          ]
+        },
+        {
+          id: 2,
+          position: '前端开发工程师',
+          company: '互联网公司',
+          duration: '2019.06 - 2021.02',
+          description: '参与多个B端和C端项目的前端开发，积累了丰富的项目经验。',
+          responsibilities: [
+            '开发企业级管理系统前端界面',
+            '与后端团队协作完成API对接',
+            '参与移动端H5页面开发',
+            '维护和优化现有项目代码'
+          ]
+        }
+      ],
+      education: [
+        {
+          id: 1,
+          degree: '计算机科学与技术 学士',
+          school: '北京理工大学',
+          period: '2015.09 - 2019.06',
+          description: '主修课程：数据结构、算法设计、软件工程、数据库系统、计算机网络'
+        }
+      ],
+      projects: [
+        {
+          id: 1,
+          name: '企业级管理系统',
+          period: '2022.01 - 2022.08',
+          description: '基于Vue3 + TypeScript开发的企业级管理系统，支持多租户、权限管理、数据可视化等功能。',
+          technologies: ['Vue3', 'TypeScript', 'Element Plus', 'Echarts', 'WebSocket']
+        },
+        {
+          id: 2,
+          name: '移动端电商平台',
+          period: '2021.05 - 2021.12',
+          description: '使用Vue.js开发的移动端电商平台，支持商品展示、购物车、订单管理等功能。',
+          technologies: ['Vue.js', 'Vant', 'Axios', 'Sass', 'PWA']
+        }
+      ],
+      awards: [
+        {
+          id: 1,
+          name: '优秀员工奖',
+          issuer: '科技有限公司',
+          date: '2023.12'
+        },
+        {
+          id: 2,
+          name: '前端技术分享最佳讲师',
+          issuer: '技术社区',
+          date: '2023.08'
+        }
+      ]
+    }
+  }
+}
+</script>
