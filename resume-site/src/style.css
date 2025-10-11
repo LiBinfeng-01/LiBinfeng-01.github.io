@@ -38,11 +38,51 @@ body {
   padding: 0 20px;
 }
 
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .name {
   font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin: 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 语言切换器样式 */
+.language-switcher {
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px;
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.lang-btn.active {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .title {
@@ -353,12 +393,22 @@ body {
     padding: 0 16px;
   }
   
+  .header-top {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
   .name {
     font-size: 2.5rem;
   }
   
   .title {
     font-size: 1.3rem;
+  }
+  
+  .language-switcher {
+    align-self: center;
   }
   
   .contact-info {
