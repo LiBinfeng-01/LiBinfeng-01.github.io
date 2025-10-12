@@ -1,9 +1,13 @@
 <template>
   <div id="app">
+    <!-- 顶部头部 -->
     <header class="header">
       <div class="container">
-        <div class="header-top">
-          <h1 class="name">{{ currentLocale.personalInfo.name }}</h1>
+        <div class="header-content">
+          <div class="logo">
+            <div class="logo-icon">J.L</div>
+            <span class="logo-text">joshen.me</span>
+          </div>
           <div class="language-switcher">
             <button 
               @click="switchLanguage('zh')" 
@@ -21,118 +25,72 @@
             </button>
           </div>
         </div>
-        <p class="title">{{ currentLocale.personalInfo.title }}</p>
-        <div class="contact-info">
-          <span v-for="contact in currentLocale.personalInfo.contact" :key="contact.type" class="contact-item">
-            <i :class="contact.icon"></i>
-            {{ contact.value }}
-          </span>
-        </div>
       </div>
     </header>
 
+    <!-- 主要内容区域 -->
     <main class="main">
       <div class="container">
-        <div class="cards-grid">
-          <!-- 个人简介卡片 -->
-          <Card :title="currentLocale.sections.about" icon="👤">
-            <p>{{ currentLocale.personalInfo.summary }}</p>
-          </Card>
+        <!-- 返回按钮 -->
+        <div class="back-button">
+          <button class="back-btn">
+            <span class="back-arrow">←</span>
+            Head Back
+          </button>
+        </div>
 
-          <!-- 技能卡片 -->
-          <Card :title="currentLocale.sections.skills" icon="💻">
-            <div class="skills-grid">
-              <div v-for="skill in currentLocale.skills" :key="skill.category" class="skill-category">
-                <h4>{{ skill.category }}</h4>
-                <div class="skill-tags">
-                  <span v-for="skillName in skill.items" :key="skillName" class="skill-tag">
-                    {{ skillName }}
-                  </span>
-                </div>
-              </div>
+        <!-- 项目网格布局 -->
+        <div class="projects-container">
+          <!-- Career 部分 -->
+          <section class="project-section">
+            <h2 class="section-title">Career</h2>
+            <div class="projects-grid">
+              <ProjectCard 
+                v-for="project in careerProjects" 
+                :key="project.id"
+                :project="project"
+              />
             </div>
-          </Card>
+          </section>
 
-          <!-- 工作经验卡片 -->
-          <Card :title="currentLocale.sections.experience" icon="💼">
-            <div class="experience-list">
-              <div v-for="job in currentLocale.experience" :key="job.id" class="experience-item">
-                <div class="job-header">
-                  <h4>{{ job.position }}</h4>
-                  <span class="company">{{ job.company }}</span>
-                  <span class="duration">{{ job.duration }}</span>
-                </div>
-                <p class="description">{{ job.description }}</p>
-                <ul v-if="job.responsibilities" class="responsibilities">
-                  <li v-for="responsibility in job.responsibilities" :key="responsibility">
-                    {{ responsibility }}
-                  </li>
-                </ul>
-              </div>
+          <!-- Freelance Projects 部分 -->
+          <section class="project-section">
+            <h2 class="section-title">Freelance Projects</h2>
+            <div class="projects-grid">
+              <ProjectCard 
+                v-for="project in freelanceProjects" 
+                :key="project.id"
+                :project="project"
+              />
             </div>
-          </Card>
+          </section>
 
-          <!-- 教育背景卡片 -->
-          <Card :title="currentLocale.sections.education" icon="🎓">
-            <div class="education-list">
-              <div v-for="edu in currentLocale.education" :key="edu.id" class="education-item">
-                <h4>{{ edu.degree }}</h4>
-                <p class="school">{{ edu.school }}</p>
-                <p class="period">{{ edu.period }}</p>
-                <p v-if="edu.description" class="description">{{ edu.description }}</p>
-              </div>
+          <!-- Personal Projects 部分 -->
+          <section class="project-section">
+            <h2 class="section-title">Personal Projects</h2>
+            <div class="projects-grid">
+              <ProjectCard 
+                v-for="project in personalProjects" 
+                :key="project.id"
+                :project="project"
+              />
             </div>
-          </Card>
-
-          <!-- 项目经验卡片 -->
-          <Card :title="currentLocale.sections.projects" icon="🚀">
-            <div class="project-list">
-              <div v-for="project in currentLocale.projects" :key="project.id" class="project-item">
-                <div class="project-header">
-                  <h4>{{ project.name }}</h4>
-                  <span class="project-period">{{ project.period }}</span>
-                </div>
-                <p class="project-description">{{ project.description }}</p>
-                <div v-if="project.technologies" class="tech-tags">
-                  <span v-for="tech in project.technologies" :key="tech" class="tech-tag">
-                    {{ tech }}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Card>
-
-          <!-- 证书奖项卡片 -->
-          <Card :title="currentLocale.sections.awards" icon="🏆">
-            <div class="awards-list">
-              <div v-for="award in currentLocale.awards" :key="award.id" class="award-item">
-                <h4>{{ award.name }}</h4>
-                <p class="award-issuer">{{ award.issuer }}</p>
-                <p class="award-date">{{ award.date }}</p>
-              </div>
-            </div>
-          </Card>
+          </section>
         </div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; 2024 {{ currentLocale.personalInfo.name }}. {{ currentLocale.footer.copyright }}</p>
-      </div>
-    </footer>
   </div>
 </template>
 
 <script>
-import Card from './components/Card.vue'
+import ProjectCard from './components/ProjectCard.vue'
 import zhLocale from './locales/zh.js'
 import enLocale from './locales/en.js'
 
 export default {
   name: 'App',
   components: {
-    Card
+    ProjectCard
   },
   data() {
     return {
@@ -140,7 +98,112 @@ export default {
       locales: {
         zh: zhLocale,
         en: enLocale
-      }
+      },
+      // 职业项目数据
+      careerProjects: [
+        {
+          id: 1,
+          name: 'ServisHero',
+          subtitle: 'Booking Platform (Services)',
+          backgroundImage: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop',
+          logo: 'H ServisHero',
+          logoColor: '#FFD700'
+        },
+        {
+          id: 2,
+          name: 'Pencil',
+          subtitle: 'Creative AI (Advertising)',
+          backgroundImage: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=400&h=300&fit=crop',
+          logo: 'p-e-n-c-i-l',
+          logoColor: '#00D4AA'
+        },
+        {
+          id: 3,
+          name: 'Supabase',
+          subtitle: 'Realtime Database',
+          backgroundImage: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop',
+          logo: 'supabase',
+          logoColor: '#3ECF8E'
+        }
+      ],
+      // 自由职业项目数据
+      freelanceProjects: [
+        {
+          id: 4,
+          name: 'Lightbox Rooftop',
+          subtitle: 'Event Space',
+          backgroundImage: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop',
+          logo: 'LIGHTBOX',
+          logoColor: '#FFFFFF'
+        },
+        {
+          id: 5,
+          name: 'Hotel 89',
+          subtitle: 'Fashion (E-Commerce)',
+          backgroundImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop',
+          logo: 'HOTEL 89',
+          logoColor: '#FFFFFF'
+        },
+        {
+          id: 6,
+          name: 'MyFishman',
+          subtitle: 'Seafood',
+          backgroundImage: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=300&fit=crop',
+          logo: 'MY FISHMAN',
+          logoColor: '#FFFFFF'
+        },
+        {
+          id: 7,
+          name: 'Stared',
+          subtitle: 'Cosmetics',
+          backgroundImage: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=300&fit=crop',
+          logo: 'STARED COSMETICS',
+          logoColor: '#FFFFFF'
+        },
+        {
+          id: 8,
+          name: 'MadThread',
+          subtitle: 'Fashion (Rental)',
+          backgroundImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop',
+          logo: 'madthread',
+          logoColor: '#FFFFFF'
+        },
+        {
+          id: 9,
+          name: 'AngelCentral',
+          subtitle: 'Investor Community',
+          backgroundImage: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=300&fit=crop',
+          logo: 'ANGEL CENTRAL',
+          logoColor: '#87CEEB'
+        }
+      ],
+      // 个人项目数据
+      personalProjects: [
+        {
+          id: 10,
+          name: 'Portfolio',
+          subtitle: 'Personal Website',
+          backgroundImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop',
+          logo: 'PORTFOLIO',
+          logoColor: '#FFFFFF'
+        },
+        {
+          id: 11,
+          name: 'TaskManager',
+          subtitle: 'Productivity App',
+          backgroundImage: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop',
+          logo: 'TASK MANAGER',
+          logoColor: '#FFFFFF'
+        },
+        {
+          id: 12,
+          name: 'WeatherApp',
+          subtitle: 'Weather Dashboard',
+          backgroundImage: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400&h=300&fit=crop',
+          logo: 'WEATHER APP',
+          logoColor: '#FFFFFF'
+        }
+      ]
     }
   },
   computed: {
