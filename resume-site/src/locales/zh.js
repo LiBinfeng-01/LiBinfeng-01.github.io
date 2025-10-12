@@ -1,13 +1,21 @@
 export default {
+  homePage: {
+    greeting: '李彬峰',
+    description: '数据库优化器开发工程师，专注于Apache Doris和YashanDB数据库优化器开发。拥有丰富的数据库优化器模块开发经验，包括Outline、Hints、MiniDump等核心功能。',
+    ctaText: '查看我的项目经验',
+    socialLinks: [
+      { name: 'GitHub', icon: 'fab fa-github', url: 'https://github.com/nothing-new-labs/cso-demo' },
+      { name: 'Email', icon: 'fas fa-envelope', url: 'mailto:1204975323@qq.com' }
+    ]
+  },
   personalInfo: {
-    name: '张三',
-    title: '前端开发工程师',
-    summary: '拥有5年前端开发经验，熟练掌握Vue.js、React、Node.js等技术栈，具备丰富的项目经验和团队协作能力。热爱技术，持续学习新技术，致力于创造优秀的用户体验。',
+    name: '李彬峰',
+    title: '数据库优化器开发工程师',
+    summary: '专注于数据库优化器开发，拥有丰富的Apache Doris和YashanDB数据库优化器模块开发经验。熟练掌握C/C++、Java、Rust等编程语言，具备扎实的数据库理论基础和丰富的项目实践经验。',
     contact: [
-      { type: 'email', icon: '📧', value: 'zhangsan@example.com' },
-      { type: 'phone', icon: '📱', value: '+86 138-0000-0000' },
-      { type: 'location', icon: '📍', value: '北京市朝阳区' },
-      { type: 'github', icon: '🐙', value: 'github.com/zhangsan' }
+      { type: 'email', icon: '📧', value: '1204975323@qq.com' },
+      { type: 'phone', icon: '📱', value: '18565770096' },
+      { type: 'birth', icon: '🎂', value: '1996.02' }
     ]
   },
   sections: {
@@ -20,83 +28,110 @@ export default {
   },
   skills: [
     {
-      category: '前端技术',
-      items: ['Vue.js', 'React', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Sass', 'Webpack', 'Vite']
+      category: '编程语言',
+      items: ['C/C++', 'Java', 'Rust', 'Python', 'SQL', 'Shell脚本']
     },
     {
-      category: '后端技术',
-      items: ['Node.js', 'Express', 'MongoDB', 'MySQL', 'Redis', 'RESTful API']
+      category: '数据库技术',
+      items: ['Apache Doris', 'YashanDB', 'PostgreSQL', 'SQL优化', '查询优化器', '分布式数据库', '数据库内核开发']
     },
     {
-      category: '工具与框架',
-      items: ['Git', 'Docker', 'Linux', 'AWS', 'Nginx', 'Jest', 'Cypress']
+      category: '开发环境',
+      items: ['Linux', 'Git', 'Docker', '数据库调优', '性能分析', '调试工具', '版本控制', 'CI/CD']
     }
   ],
   experience: [
     {
       id: 1,
-      position: '高级前端开发工程师',
-      company: '科技有限公司',
-      duration: '2021.03 - 至今',
-      description: '负责公司核心产品的前端开发工作，带领团队完成多个重要项目。',
+      position: '数据库优化器开发工程师',
+      company: '深圳计算科学研究院',
+      duration: '2020年11月 - 2023年02月',
+      description: '在YashanDB项目中负责数据库优化器模块开发，包括分布式优化器和与PostgreSQL的集成。参与了数据库架构的演进和优化。',
       responsibilities: [
-        '负责公司主要产品的前端架构设计和开发',
-        '带领3人前端团队，指导初级开发人员',
-        '优化前端性能，提升用户体验',
-        '参与产品需求分析和技术方案制定'
+        '负责YashanDB数据库优化器模块开发',
+        '实现了分布式优化器功能',
+        '开发了与PostgreSQL的集成模块',
+        '参与了数据库架构的演进设计',
+        '优化了行列执行引擎的兼容性',
+        '提供了技术支持和问题解决'
       ]
     },
     {
       id: 2,
-      position: '前端开发工程师',
-      company: '互联网公司',
-      duration: '2019.06 - 2021.02',
-      description: '参与多个B端和C端项目的前端开发，积累了丰富的项目经验。',
+      position: '数据库优化器开发工程师',
+      company: '北京飞轮科技有限公司',
+      duration: '2023年03月 - 至今',
+      description: '在Apache Doris项目中负责数据库优化器模块开发，包括Outline、Hints、MiniDump等核心功能。作为核心开发人员，深度参与了数据库优化器的设计和实现。',
       responsibilities: [
-        '开发企业级管理系统前端界面',
-        '与后端团队协作完成API对接',
-        '参与移动端H5页面开发',
-        '维护和优化现有项目代码'
+        '负责Apache Doris数据库优化器模块的架构设计和开发',
+        '从零到一实现了Outline(SQL Plan Manager)模块',
+        '开发了数据库优化器Hints功能模块',
+        '实现了MiniDump(Plan Replayer)模块',
+        '与团队协作完成多个重要功能模块',
+        '参与代码审查和技术方案讨论'
       ]
     }
   ],
   education: [
     {
       id: 1,
-      degree: '计算机科学与技术 学士',
-      school: '北京理工大学',
-      period: '2015.09 - 2019.06',
-      description: '主修课程：数据结构、算法设计、软件工程、数据库系统、计算机网络'
+      degree: '物理学 硕士',
+      school: '哈尔滨工业大学',
+      period: '2018年09月 - 2020年08月',
+      description: '在哈尔滨工业大学攻读物理学硕士学位，培养了严谨的科学思维和扎实的理论基础。主要研究方向为理论物理和计算物理，完成了高质量的硕士论文。'
+    },
+    {
+      id: 2,
+      degree: '物理学 学士',
+      school: '南方科技大学',
+      period: '2014年09月 - 2018年06月',
+      description: '在南方科技大学完成物理学本科学位，建立了扎实的物理和数学基础。主要课程包括高等数学、线性代数、概率论、物理实验等，培养了良好的逻辑思维能力。'
     }
   ],
   projects: [
     {
       id: 1,
-      name: '企业级管理系统',
-      period: '2022.01 - 2022.08',
-      description: '基于Vue3 + TypeScript开发的企业级管理系统，支持多租户、权限管理、数据可视化等功能。',
-      technologies: ['Vue3', 'TypeScript', 'Element Plus', 'Echarts', 'WebSocket']
+      name: 'Doris Outline (SQL Plan Manager)',
+      period: '2023年 - 至今',
+      description: '从零到一实现了doris outline(SQL PLAN MANAGER)模块，能够固定执行计划来避免性能出现波动。',
+      technologies: ['C++', 'Apache Doris', 'SQL优化']
     },
     {
       id: 2,
-      name: '移动端电商平台',
-      period: '2021.05 - 2021.12',
-      description: '使用Vue.js开发的移动端电商平台，支持商品展示、购物车、订单管理等功能。',
-      technologies: ['Vue.js', 'Vant', 'Axios', 'Sass', 'PWA']
+      name: 'CSO-Demo Cascade-Style Optimizer',
+      period: '2023年 - 至今',
+      description: '从零到一实现了cbo优化器模块，能够进行计划枚举，根据cost进行计划选择。目前实现了index计划选择。',
+      technologies: ['C++', 'CBO优化器', '计划枚举'],
+      url: 'https://github.com/nothing-new-labs/cso-demo'
+    },
+    {
+      id: 3,
+      name: 'Doris数据库优化器Hints模块',
+      period: '2023年 - 至今',
+      description: '实现了doris数据库cbo优化器hint功能，能够根据用户设定进行自定义的join计划选择，进行调优。',
+      technologies: ['C++', 'Apache Doris', 'Hints', '查询优化'],
+      url: 'https://doris.apache.org/zh-CN/docs/query-acceleration/hints/hints-overview'
+    },
+    {
+      id: 4,
+      name: 'Doris数据库优化器MiniDump模块',
+      period: '2023年 - 至今',
+      description: '开发doris数据库优化器模块minidump(PLAN REPLAYER)模块，能够一键式收集环境信息，使得分析客户问题更加便捷。',
+      technologies: ['C++', 'Apache Doris', 'MiniDump', '问题诊断']
     }
   ],
   awards: [
     {
       id: 1,
-      name: '优秀员工奖',
-      issuer: '科技有限公司',
-      date: '2023.12'
+      name: 'CET-6',
+      issuer: '大学英语六级',
+      date: '492分'
     },
     {
       id: 2,
-      name: '前端技术分享最佳讲师',
-      issuer: '技术社区',
-      date: '2023.08'
+      name: 'TOEFL',
+      issuer: '托福考试',
+      date: '86分'
     }
   ],
   footer: {

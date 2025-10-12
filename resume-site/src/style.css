@@ -49,17 +49,97 @@ body {
   gap: 12px;
 }
 
-.logo-icon {
+.tennis-logo {
   width: 40px;
   height: 40px;
-  background: #333;
-  color: white;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 0.9rem;
+  transform: rotate(-15deg);
+  transition: transform 0.3s ease;
+}
+
+.tennis-logo:hover {
+  transform: rotate(-15deg) scale(1.1);
+}
+
+.tennis-ball {
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+  border-radius: 50%;
+  position: absolute;
+  z-index: 3;
+  box-shadow: 
+    0 2px 8px rgba(0,0,0,0.2),
+    0 1px 3px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.tennis-ball::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  right: 2px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #333 20%, #333 80%, transparent 100%);
+  transform: translateY(-50%);
+}
+
+.tennis-ball::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 2px;
+  bottom: 2px;
+  width: 1px;
+  background: linear-gradient(180deg, transparent 0%, #333 20%, #333 80%, transparent 100%);
+  transform: translateX(-50%);
+}
+
+.tennis-racket {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #2c3e50;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 2;
+  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+  box-shadow: 
+    0 2px 6px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.tennis-racket::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #34495e;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: 
+    linear-gradient(45deg, transparent 48%, #34495e 49%, #34495e 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, #34495e 49%, #34495e 51%, transparent 52%);
+  background-size: 3px 3px;
+}
+
+.tennis-racket::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 3px;
+  height: 12px;
+  background: linear-gradient(180deg, #2c3e50 0%, #1a252f 100%);
+  transform: translateX(-50%);
+  border-radius: 0 0 2px 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .logo-text {

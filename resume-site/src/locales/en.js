@@ -1,13 +1,21 @@
 export default {
+  homePage: {
+    greeting: 'Binfeng Li',
+    description: 'Database optimizer developer specializing in Apache Doris and YashanDB database optimizer development. Extensive experience in database optimizer module development including Outline, Hints, MiniDump and other core functionalities.',
+    ctaText: 'View my project experience',
+    socialLinks: [
+      { name: 'GitHub', icon: 'fab fa-github', url: 'https://github.com/nothing-new-labs/cso-demo' },
+      { name: 'Email', icon: 'fas fa-envelope', url: 'mailto:1204975323@qq.com' }
+    ]
+  },
   personalInfo: {
-    name: 'John Smith',
-    title: 'Frontend Developer',
-    summary: 'Experienced frontend developer with 5+ years of expertise in Vue.js, React, Node.js and other modern technologies. Passionate about creating exceptional user experiences and continuously learning new technologies.',
+    name: 'Binfeng Li',
+    title: 'Database Optimizer Developer',
+    summary: 'Specialized in database optimizer development with extensive experience in Apache Doris and YashanDB database optimizer module development. Proficient in C/C++, Java, Rust and other programming languages with solid database theoretical foundation and rich project experience.',
     contact: [
-      { type: 'email', icon: '📧', value: 'john.smith@example.com' },
-      { type: 'phone', icon: '📱', value: '+1 (555) 123-4567' },
-      { type: 'location', icon: '📍', value: 'San Francisco, CA' },
-      { type: 'github', icon: '🐙', value: 'github.com/johnsmith' }
+      { type: 'email', icon: '📧', value: '1204975323@qq.com' },
+      { type: 'phone', icon: '📱', value: '18565770096' },
+      { type: 'birth', icon: '🎂', value: '1996.02' }
     ]
   },
   sections: {
@@ -20,83 +28,110 @@ export default {
   },
   skills: [
     {
-      category: 'Frontend Technologies',
-      items: ['Vue.js', 'React', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Sass', 'Webpack', 'Vite']
+      category: 'Programming Languages',
+      items: ['C/C++', 'Java', 'Rust', 'Python', 'SQL', 'Shell Scripting']
     },
     {
-      category: 'Backend Technologies',
-      items: ['Node.js', 'Express', 'MongoDB', 'MySQL', 'Redis', 'RESTful API']
+      category: 'Database Technologies',
+      items: ['Apache Doris', 'YashanDB', 'PostgreSQL', 'SQL Optimization', 'Query Optimizer', 'Distributed Databases', 'Database Kernel Development']
     },
     {
-      category: 'Tools & Frameworks',
-      items: ['Git', 'Docker', 'Linux', 'AWS', 'Nginx', 'Jest', 'Cypress']
+      category: 'Development Environment',
+      items: ['Linux', 'Git', 'Docker', 'Database Tuning', 'Performance Analysis', 'Debugging Tools', 'Version Control', 'CI/CD']
     }
   ],
   experience: [
     {
       id: 1,
-      position: 'Senior Frontend Developer',
-      company: 'Tech Solutions Inc.',
-      duration: 'Mar 2021 - Present',
-      description: 'Leading frontend development for core company products and managing a team of developers.',
+      position: 'Database Optimizer Developer',
+      company: 'Shenzhen Institute of Computing Science',
+      duration: 'November 2020 - February 2023',
+      description: 'Responsible for YashanDB database optimizer module development, including distributed optimizers and integration with PostgreSQL. Participated in database architecture evolution and optimization.',
       responsibilities: [
-        'Architect and develop frontend solutions for main company products',
-        'Lead a team of 3 frontend developers and mentor junior developers',
-        'Optimize frontend performance and enhance user experience',
-        'Participate in product requirement analysis and technical solution planning'
+        'Responsible for YashanDB database optimizer module development',
+        'Implemented distributed optimizer functionality',
+        'Developed integration modules with PostgreSQL',
+        'Participated in database architecture evolution design',
+        'Optimized compatibility between row-based and columnar execution engines',
+        'Provided technical support and problem resolution'
       ]
     },
     {
       id: 2,
-      position: 'Frontend Developer',
-      company: 'Digital Innovation Co.',
-      duration: 'Jun 2019 - Feb 2021',
-      description: 'Developed frontend solutions for various B2B and B2C projects, gaining extensive project experience.',
+      position: 'Database Optimizer Developer',
+      company: 'Beijing Feilun Technology Co., Ltd.',
+      duration: 'March 2023 - Present',
+      description: 'Responsible for Apache Doris database optimizer module development, including Outline, Hints, MiniDump and other core functionalities. As a core developer, deeply involved in the design and implementation of database optimizers.',
       responsibilities: [
-        'Develop enterprise-level management system frontend interfaces',
-        'Collaborate with backend teams for API integration',
-        'Participate in mobile H5 page development',
-        'Maintain and optimize existing project code'
+        'Responsible for architecture design and development of Apache Doris database optimizer modules',
+        'Implemented Outline (SQL Plan Manager) module from scratch',
+        'Developed database optimizer Hints functionality module',
+        'Implemented MiniDump (Plan Replayer) module',
+        'Collaborated with team to complete multiple important functional modules',
+        'Participated in code reviews and technical solution discussions'
       ]
     }
   ],
   education: [
     {
       id: 1,
-      degree: 'Bachelor of Computer Science',
-      school: 'University of California, Berkeley',
-      period: 'Sep 2015 - Jun 2019',
-      description: 'Core courses: Data Structures, Algorithm Design, Software Engineering, Database Systems, Computer Networks'
+      degree: 'Master\'s Degree in Physics',
+      school: 'Harbin Institute of Technology',
+      period: 'September 2018 - August 2020',
+      description: 'Pursued Master\'s degree in Physics at Harbin Institute of Technology, developing rigorous scientific thinking and solid theoretical foundation. Main research focus on theoretical physics and computational physics, completed high-quality master\'s thesis.'
+    },
+    {
+      id: 2,
+      degree: 'Bachelor\'s Degree in Physics',
+      school: 'Southern University of Science and Technology',
+      period: 'September 2014 - June 2018',
+      description: 'Completed Bachelor\'s degree in Physics at Southern University of Science and Technology, establishing solid foundation in physics and mathematics. Main courses included Advanced Mathematics, Linear Algebra, Probability Theory, Physics Experiments, developing strong logical thinking abilities.'
     }
   ],
   projects: [
     {
       id: 1,
-      name: 'Enterprise Management System',
-      period: 'Jan 2022 - Aug 2022',
-      description: 'Enterprise-level management system built with Vue3 + TypeScript, featuring multi-tenancy, permission management, and data visualization.',
-      technologies: ['Vue3', 'TypeScript', 'Element Plus', 'Echarts', 'WebSocket']
+      name: 'Doris Outline (SQL Plan Manager)',
+      period: '2023 - Present',
+      description: 'Implemented the Doris Outline module from scratch to fix execution plans and avoid performance fluctuations.',
+      technologies: ['C++', 'Apache Doris', 'SQL Optimization']
     },
     {
       id: 2,
-      name: 'Mobile E-commerce Platform',
-      period: 'May 2021 - Dec 2021',
-      description: 'Mobile e-commerce platform developed with Vue.js, supporting product display, shopping cart, and order management.',
-      technologies: ['Vue.js', 'Vant', 'Axios', 'Sass', 'PWA']
+      name: 'CSO-Demo Cascade-Style Optimizer',
+      period: '2023 - Present',
+      description: 'Developed the CBO optimizer module from scratch, enabling plan enumeration and cost-based plan selection. Currently supports index plan selection.',
+      technologies: ['C++', 'CBO Optimizer', 'Plan Enumeration'],
+      url: 'https://github.com/nothing-new-labs/cso-demo'
+    },
+    {
+      id: 3,
+      name: 'Doris Database Optimizer Hints Module',
+      period: '2023 - Present',
+      description: 'Designed and implemented hint functionality for the Doris CBO optimizer, enabling user-defined join plan selection for performance tuning.',
+      technologies: ['C++', 'Apache Doris', 'Hints', 'Query Optimization'],
+      url: 'https://doris.apache.org/docs/query-acceleration/hints/hints-overview'
+    },
+    {
+      id: 4,
+      name: 'Doris Database Optimizer MiniDump Module',
+      period: '2023 - Present',
+      description: 'Built a one-click environment information collection tool to streamline customer issue analysis. Just like minidump in gporca.',
+      technologies: ['C++', 'Apache Doris', 'MiniDump', 'Issue Diagnosis']
     }
   ],
   awards: [
     {
       id: 1,
-      name: 'Employee of the Year',
-      issuer: 'Tech Solutions Inc.',
-      date: 'Dec 2023'
+      name: 'CET-6',
+      issuer: 'College English Test',
+      date: '492'
     },
     {
       id: 2,
-      name: 'Best Technical Speaker',
-      issuer: 'Developer Community',
-      date: 'Aug 2023'
+      name: 'TOEFL',
+      issuer: 'Test of English as a Foreign Language',
+      date: '86'
     }
   ],
   footer: {
