@@ -65,6 +65,12 @@ jobs:
           cp -r resume-site/dist/* ./
           # 创建 .nojekyll 文件以避免 Jekyll 处理
           touch .nojekyll
+          # 确保assets目录存在并复制文件
+          mkdir -p assets
+          cp -r resume-site/dist/assets/* assets/
+          # 列出文件以验证部署
+          ls -la
+          ls -la assets/
 
       - name: 上传构建产物
         uses: actions/upload-pages-artifact@v3
