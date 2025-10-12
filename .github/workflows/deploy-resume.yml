@@ -61,21 +61,22 @@ jobs:
 
       - name: 准备部署文件
         run: |
-          # 将构建的文件移动到根目录
-          cp -r resume-site/dist/* ./
+          # 创建部署目录
+          mkdir -p deploy
+          # 将构建的文件复制到部署目录
+          cp -r resume-site/dist/* deploy/
           # 创建 .nojekyll 文件以避免 Jekyll 处理
-          touch .nojekyll
-          # 确保assets目录存在并复制文件
-          mkdir -p assets
-          cp -r resume-site/dist/assets/* assets/
+          touch deploy/.nojekyll
           # 列出文件以验证部署
-          ls -la
-          ls -la assets/
+          echo "=== Deploy directory contents ==="
+          ls -la deploy/
+          echo "=== Assets directory contents ==="
+          ls -la deploy/assets/
 
       - name: 上传构建产物
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: deploy
 
   # 部署任务
   deploy:
