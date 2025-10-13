@@ -89,6 +89,9 @@
 import ProjectCard from './ProjectCard.vue'
 import zhLocale from '../locales/zh.js'
 import enLocale from '../locales/en.js'
+import yashandbLogo from '../assets/yashandb-logo.jpg'
+import sicsLogo from '../assets/sics-logo.jpg'
+import selectdbLogo from '../assets/selectdb-logo.jpg'
 
 export default {
   name: 'ProjectsPage',
@@ -104,8 +107,8 @@ export default {
       },
       // 背景图片数组 - 数据库相关图片
       databaseImages: [
-        './assets/yashandb-logo.png', // YashanDB Logo
-        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop', // 数据库服务器
+        sicsLogo, // YashanDB Logo - 第一张卡片
+        selectdbLogo,
         'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop', // 代码编程
         'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop'  // 数据分析
       ],
@@ -257,25 +260,33 @@ export default {
           responsibilities: details.responsibilities || experience.responsibilities || [],
           achievements: details.achievements || [],
           url: details.url || '',
+          duration: details.duration || experience.duration,
+          industry: this.currentLanguage === 'zh' ? '数据库技术' : 'Database Technology',
           backgroundImage: this.databaseImages[index % this.databaseImages.length],
-          logo: experience.company.split(' ').map(word => word.substring(0, 3).toUpperCase()).join(' '),
-          logoColor: this.colors[index % this.colors.length]
+          logo: '',
+          logoColor: this.colors[index % this.colors.length],
+          isLogo: index === 0 // 第一张卡片（YashanDB）使用logo样式
         }
       })
     },
     freelanceProjects() {
       return this.currentLocale.skills.map((skill, index) => {
         const details = this.modalDetails.skills[skill.category] || {}
+        const descriptionText = this.currentLanguage === 'zh' 
+          ? `在${skill.category}方面拥有丰富的实践经验，熟练掌握相关技术栈。`
+          : `Extensive practical experience in ${skill.category}, proficient in related technology stacks.`
         return {
           id: index + 10,
           name: skill.category,
           subtitle: skill.items.join(', '),
-          description: details.description || `在${skill.category}方面拥有丰富的实践经验，熟练掌握相关技术栈。`,
+          description: details.description || descriptionText,
           technologies: skill.items,
           details: details.details || [],
           experience: details.experience || '',
+          duration: details.experience || (this.currentLanguage === 'zh' ? '持续学习' : 'Continuous Learning'),
+          industry: this.currentLanguage === 'zh' ? '技术技能' : 'Technical Skills',
           backgroundImage: this.skillImages[index % this.skillImages.length],
-          logo: skill.category.split(' ').map(word => word.substring(0, 3).toUpperCase()).join(' '),
+          logo: '',
           logoColor: this.colors[(index + 2) % this.colors.length]
         }
       })
@@ -291,8 +302,10 @@ export default {
           technologies: [edu.degree, edu.period],
           details: details.details || [],
           achievements: details.achievements || [],
+          duration: edu.period,
+          industry: this.currentLanguage === 'zh' ? '教育背景' : 'Education Background',
           backgroundImage: this.educationImages[index % this.educationImages.length],
-          logo: edu.school.split(' ').map(word => word.substring(0, 3).toUpperCase()).join(' '),
+          logo: '',
           logoColor: this.colors[(index + 4) % this.colors.length]
         }
       })

@@ -1,9 +1,6 @@
 <template>
-  <div class="project-card" :style="{ backgroundImage: `url(${project.backgroundImage})` }" @click="openModal">
-    <div class="project-overlay">
-      <div class="project-logo" :style="{ color: project.logoColor }">
-        {{ project.logo }}
-      </div>
+  <div class="project-card" :class="{ 'logo-card': project.isLogo }" :style="{ backgroundImage: `url(${project.backgroundImage})` }" @click="openModal">
+      <div class="project-overlay">
       <div class="project-info">
         <h3 class="project-title">{{ project.name }}</h3>
         <p class="project-subtitle">{{ project.subtitle }}</p>
@@ -15,57 +12,49 @@
   <div v-if="showModal" class="modal-overlay" @click="closeModal">
     <div class="modal-content" @click.stop>
       <button class="modal-close" @click="closeModal">&times;</button>
-      <div class="modal-header">
-        <h2 class="modal-title">{{ project.name }}</h2>
-        <p class="modal-subtitle">{{ project.subtitle }}</p>
-      </div>
-      <div class="modal-body">
-        <div v-if="project.description" class="modal-description">
-          <h3>{{ $parent.currentLocale?.sections?.about || '项目描述' }}</h3>
-          <p>{{ project.description }}</p>
+      
+      <!-- 左侧图片区域 -->
+      <div class="modal-image-section">
+        <div class="modal-image" :class="{ 'modal-logo-image': project.isLogo }" :style="{ backgroundImage: `url(${project.backgroundImage})` }">
         </div>
-        <div v-if="project.technologies" class="modal-technologies">
-          <h3>{{ $parent.currentLocale?.sections?.skills || '技术栈' }}</h3>
-          <div class="tech-tags">
-            <span v-for="tech in project.technologies" :key="tech" class="tech-tag">
-              {{ tech }}
-            </span>
+      </div>
+      
+      <!-- 右侧内容区域 -->
+      <div class="modal-content-section">
+        <div class="modal-header">
+          <h2 class="modal-title">
+            {{ project.name }}
+            <span v-if="project.url" class="modal-link-icon">🔗</span>
+          </h2>
+          <p class="modal-date">{{ project.duration || ($parent.currentLanguage === 'zh' ? '项目时间' : 'Project Duration') }}</p>
+          <div class="modal-meta">
+            <div class="modal-meta-item">
+              <span class="modal-meta-label">{{ $parent.currentLanguage === 'zh' ? '行业:' : 'Industry:' }}</span>
+              <span class="modal-meta-value">{{ project.industry || ($parent.currentLanguage === 'zh' ? '技术开发' : 'Technology Development') }}</span>
+            </div>
+            <div class="modal-meta-item">
+              <span class="modal-meta-label">{{ $parent.currentLanguage === 'zh' ? '角色:' : 'Role:' }}</span>
+              <span class="modal-meta-value">{{ project.subtitle }}</span>
+            </div>
           </div>
         </div>
-        <div v-if="project.responsibilities && project.responsibilities.length > 0" class="modal-responsibilities">
-          <h3>主要职责</h3>
-          <ul>
-            <li v-for="responsibility in project.responsibilities" :key="responsibility">
-              {{ responsibility }}
-            </li>
-          </ul>
-        </div>
-        <div v-if="project.achievements && project.achievements.length > 0" class="modal-achievements">
-          <h3>主要成就</h3>
-          <ul>
-            <li v-for="achievement in project.achievements" :key="achievement">
-              {{ achievement }}
-            </li>
-          </ul>
-        </div>
-        <div v-if="project.details && project.details.length > 0" class="modal-details">
-          <h3>详细信息</h3>
-          <ul>
-            <li v-for="detail in project.details" :key="detail">
-              {{ detail }}
-            </li>
-          </ul>
-        </div>
-        <div v-if="project.experience" class="modal-experience">
-          <h3>工作经验</h3>
-          <p>{{ project.experience }}</p>
-        </div>
-        <div v-if="project.url" class="modal-links">
-          <h3>相关链接</h3>
-          <a :href="project.url" target="_blank" class="modal-link">
-            <i class="fas fa-external-link-alt"></i>
-            查看项目
-          </a>
+        
+        <div class="modal-body">
+          <div v-if="project.description" class="modal-description">
+            <p>{{ project.description }}</p>
+          </div>
+          
+          <div v-if="project.responsibilities && project.responsibilities.length > 0" class="modal-responsibilities">
+            <p>{{ project.responsibilities.join(' ') }}</p>
+          </div>
+          
+          <div v-if="project.technologies" class="modal-technologies">
+            <div class="tech-tags">
+              <span v-for="tech in project.technologies" :key="tech" class="tech-tag">
+                {{ tech }}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -109,9 +98,10 @@ export default {
   width: 100%;
   height: 300px;
   border-radius: 12px;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: #f8f9fa;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -120,6 +110,23 @@ export default {
 .project-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo卡片特殊样式 */
+.logo-card {
+  background-size: contain !important;
+  background-color: #ffffff !important;
+  background-position: center !important;
+  padding: 20px;
+}
+
+.logo-card .project-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
 }
 
 .project-overlay {
@@ -136,15 +143,8 @@ export default {
   );
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 20px;
-}
-
-.project-logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  margin-bottom: auto;
 }
 
 .project-info {
@@ -173,7 +173,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(26, 26, 26, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -182,19 +182,22 @@ export default {
 }
 
 .modal-content {
-  background: #1a1a1a;
+  background: #2a2a2a;
   border-radius: 16px;
-  max-width: 600px;
-  width: 100%;
-  max-height: 80vh;
-  overflow-y: auto;
+  width: 90%;
+  height: 85%;
+  max-width: 1400px;
+  max-height: 900px;
+  display: flex;
   position: relative;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modal-close {
   position: absolute;
-  top: 15px;
+  top: 20px;
   right: 20px;
   background: none;
   border: none;
@@ -203,52 +206,139 @@ export default {
   cursor: pointer;
   z-index: 1001;
   transition: color 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .modal-close:hover {
-  color: #00D4AA;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ff6b6b;
+}
+
+/* 左侧图片区域 */
+.modal-image-section {
+  flex: 0 0 55%;
+  position: relative;
+}
+
+.modal-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Logo图片在弹窗中的特殊样式 */
+.modal-logo-image {
+  background-size: contain !important;
+  background-color: #ffffff !important;
+  background-position: center !important;
+  padding: 40px;
+}
+
+
+/* 右侧内容区域 */
+.modal-content-section {
+  flex: 0 0 45%;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
 }
 
 .modal-header {
-  padding: 30px 30px 20px 30px;
-  border-bottom: 1px solid #333;
+  margin-bottom: 30px;
 }
 
 .modal-title {
   color: #ffffff;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
-  margin: 0 0 10px 0;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.3;
 }
 
-.modal-subtitle {
-  color: #00D4AA;
-  font-size: 1.1rem;
-  margin: 0;
+.modal-link-icon {
+  font-size: 1rem;
+  opacity: 0.7;
 }
 
-.modal-body {
-  padding: 30px;
-}
-
-.modal-body h3 {
-  color: #ffffff;
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0 0 15px 0;
-  border-bottom: 2px solid #00D4AA;
-  padding-bottom: 5px;
+.modal-date {
+  color: #B0B0B0;
+  font-size: 1rem;
+  margin: 0 0 25px 0;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 16px;
+  border-radius: 20px;
   display: inline-block;
 }
 
+.modal-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-meta-label {
+  color: #A0A0A0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  min-width: 60px;
+}
+
+.modal-meta-value {
+  color: #E0E0E0;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.modal-body {
+  flex: 1;
+}
+
+.modal-description {
+  margin-bottom: 25px;
+}
+
 .modal-description p {
-  color: #cccccc;
-  line-height: 1.6;
-  margin: 0 0 20px 0;
+  color: #D0D0D0;
+  line-height: 1.7;
+  margin: 0;
+  font-size: 1.05rem;
+  text-align: justify;
+}
+
+.modal-responsibilities {
+  margin-bottom: 25px;
+}
+
+.modal-responsibilities p {
+  color: #D0D0D0;
+  line-height: 1.7;
+  margin: 0;
+  font-size: 1.05rem;
+  text-align: justify;
 }
 
 .modal-technologies {
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 .tech-tags {
@@ -258,59 +348,19 @@ export default {
 }
 
 .tech-tag {
-  background: #00D4AA;
+  background: linear-gradient(135deg, #00D4AA 0%, #00B894 100%);
   color: #000000;
-  padding: 6px 12px;
-  border-radius: 20px;
+  padding: 8px 16px;
+  border-radius: 25px;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 212, 170, 0.3);
+  transition: all 0.3s ease;
 }
 
-.modal-responsibilities,
-.modal-achievements,
-.modal-details,
-.modal-experience {
-  margin-bottom: 20px;
-}
-
-.modal-responsibilities ul,
-.modal-achievements ul,
-.modal-details ul {
-  color: #cccccc;
-  line-height: 1.6;
-  margin: 0;
-  padding-left: 20px;
-}
-
-.modal-responsibilities li,
-.modal-achievements li,
-.modal-details li {
-  margin-bottom: 8px;
-}
-
-.modal-experience p {
-  color: #cccccc;
-  line-height: 1.6;
-  margin: 0;
-  font-style: italic;
-}
-
-.modal-links {
-  margin-bottom: 0;
-}
-
-.modal-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #00D4AA;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.modal-link:hover {
-  color: #00B894;
+.tech-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 212, 170, 0.4);
 }
 
 @media (max-width: 768px) {
@@ -331,20 +381,36 @@ export default {
   }
 
   .modal-content {
-    margin: 10px;
-    max-height: 90vh;
+    width: 95%;
+    height: 90%;
+    flex-direction: column;
   }
 
-  .modal-header {
-    padding: 20px 20px 15px 20px;
+  .modal-image-section {
+    flex: 0 0 40%;
   }
 
-  .modal-body {
+  .modal-content-section {
+    flex: 0 0 60%;
     padding: 20px;
   }
 
   .modal-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  .modal-date {
+    font-size: 0.8rem;
+  }
+
+  .modal-meta-label,
+  .modal-meta-value {
+    font-size: 0.8rem;
+  }
+
+  .modal-description p,
+  .modal-responsibilities p {
+    font-size: 0.9rem;
   }
 }
 </style>
