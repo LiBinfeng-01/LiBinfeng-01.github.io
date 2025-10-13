@@ -96,9 +96,9 @@ export default {
 .project-card {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 200px;
   border-radius: 12px;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-color: #f8f9fa;
@@ -127,6 +127,7 @@ export default {
     rgba(0, 0, 0, 0.2) 50%,
     rgba(0, 0, 0, 0.6) 100%
   );
+  align-items: flex-start;
 }
 
 .project-overlay {
@@ -144,7 +145,8 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 20px;
+  align-items: flex-start;
+  padding: 15px;
 }
 
 .project-info {
@@ -153,15 +155,15 @@ export default {
 
 .project-title {
   color: white;
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin: 0 0 8px 0;
+  margin: 0 0 4px 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .project-subtitle {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin: 0;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
 }

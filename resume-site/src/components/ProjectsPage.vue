@@ -47,7 +47,7 @@
           <!-- Career 部分 -->
           <section class="project-section">
             <h2 class="section-title">Career</h2>
-            <div class="projects-grid">
+            <div class="projects-grid career-grid">
               <ProjectCard 
                 v-for="project in careerProjects" 
                 :key="project.id"
@@ -59,7 +59,7 @@
           <!-- Technical Skills 部分 -->
           <section class="project-section">
             <h2 class="section-title">Technical Skills</h2>
-            <div class="projects-grid">
+            <div class="projects-grid skills-grid">
               <ProjectCard 
                 v-for="project in freelanceProjects" 
                 :key="project.id"
@@ -336,26 +336,37 @@ export default {
 }
 
 .project-section {
-  margin-bottom: 60px;
+  margin-bottom: 0;
 }
 
 .section-title {
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   color: #ffffff;
-  text-align: center;
+  text-align: left;
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 0;
+}
+
+/* Career部分 - 3个卡片水平排列 */
+.career-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Technical Skills部分 - 2x3网格 */
+.skills-grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
 }
 
 .back-button {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .back-btn {
@@ -384,5 +395,46 @@ export default {
 
 .back-btn:hover .back-arrow {
   transform: translateX(-3px);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .career-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .career-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .project-section {
+    margin-bottom: 0;
+  }
 }
 </style>
