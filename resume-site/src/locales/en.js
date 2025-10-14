@@ -26,6 +26,12 @@ export default {
     projects: 'Projects',
     awards: 'Awards & Certifications'
   },
+  projectsPage: {
+    backButton: 'Head Back',
+    career: 'Career',
+    technicalSkills: 'Technical Skills',
+    education: 'Education & Certifications'
+  },
   skills: [
     {
       category: 'Programming Languages',
@@ -136,5 +142,122 @@ export default {
   ],
   footer: {
     copyright: 'All rights reserved.'
+  },
+  // Detailed content for modal display
+  modalDetails: {
+    // Career experience detailed content
+    career: {
+      1: {
+        title: 'Shenzhen Institute of Computing Science - Database Optimizer Developer',
+        description: 'Responsible for YashanDB database optimizer module development, including distributed optimizers and integration with PostgreSQL. Participated in database architecture evolution and optimization.',
+        responsibilities: [
+          'Responsible for YashanDB database optimizer module development',
+          'Implemented distributed optimizer functionality',
+          'Developed integration modules with PostgreSQL',
+          'Participated in database architecture evolution design',
+          'Optimized compatibility between row-based and columnar execution engines',
+          'Provided technical support and problem resolution'
+        ],
+        technologies: ['C++', 'YashanDB', 'PostgreSQL', 'Distributed Systems', 'Database Optimization'],
+        achievements: [
+          'Successfully implemented distributed optimizer functionality',
+          'Completed deep integration with PostgreSQL',
+          'Improved overall database system performance',
+          'Accumulated extensive distributed database development experience'
+        ],
+        duration: 'November 2020 - February 2023'
+      },
+      2: {
+        title: 'Beijing Feilun Technology Co., Ltd. - Database Optimizer Developer',
+        description: 'Responsible for Apache Doris database optimizer module development, including Outline, Hints, MiniDump and other core functionalities. As a core developer, deeply involved in the design and implementation of database optimizers.',
+        responsibilities: [
+          'Responsible for architecture design and development of Apache Doris database optimizer modules',
+          'Implemented Outline (SQL Plan Manager) module from scratch',
+          'Developed database optimizer Hints functionality module',
+          'Implemented MiniDump (Plan Replayer) module',
+          'Collaborated with team to complete multiple important functional modules',
+          'Participated in code reviews and technical solution discussions'
+        ],
+        technologies: ['C++', 'Apache Doris', 'SQL Optimization', 'Query Optimizer', 'Database Kernel'],
+        achievements: [
+          'Successfully delivered multiple core optimizer modules',
+          'Significantly improved database query performance',
+          'Provided stable performance guarantees for production environments',
+          'Received high recognition from team and customers'
+        ],
+        duration: 'March 2023 - Present'
+      }
+    },
+    // Technical skills detailed content
+    skills: {
+      'Programming Languages': {
+        title: 'Programming Languages',
+        description: 'Proficient in multiple programming languages with solid programming foundation and extensive development experience.',
+        details: [
+          'C/C++: Expert in system-level programming with database kernel development experience',
+          'Java: Familiar with enterprise application development, mastering Spring framework',
+          'Rust: Understanding of systems programming and memory-safe programming',
+          'Python: Proficient in data analysis and script development'
+        ],
+        experience: '5+ years of database system development experience'
+      },
+      'Database Technologies': {
+        title: 'Database Technologies',
+        description: 'Specialized in database optimizer and query processing technologies with deep database theoretical foundation.',
+        details: [
+          'Apache Doris: Deep involvement in optimizer module development',
+          'YashanDB: Responsible for distributed optimizer development',
+          'PostgreSQL: Familiar with query optimization and extension development',
+          'SQL Optimization: Expert in query plan optimization and performance tuning'
+        ],
+        experience: '3+ years of database optimizer development experience'
+      },
+      'Development Environment': {
+        title: 'Development Environment',
+        description: 'Proficient in various development tools and environments with efficient development workflow.',
+        details: [
+          'Linux: Expert in Linux system administration and development environment configuration',
+          'Git: Proficient in version control and collaborative development',
+          'Docker: Master containerized deployment and development',
+          'Performance Analysis: Proficient in various performance analysis tools'
+        ],
+        experience: '5+ years of Linux development experience'
+      }
+    },
+    // Education background detailed content
+    education: {
+      'Harbin Institute of Technology': {
+        title: 'Harbin Institute of Technology - Master\'s Degree in Physics',
+        description: 'Pursued Master\'s degree in Physics at Harbin Institute of Technology, developing rigorous scientific thinking and solid theoretical foundation.',
+        details: [
+          'Major: Physics',
+          'Degree: Master\'s Degree',
+          'Period: September 2018 - August 2020',
+          'Research Focus: Theoretical Physics and Computational Physics',
+          'Main Courses: Quantum Mechanics, Statistical Physics, Computational Physics'
+        ],
+        achievements: [
+          'Completed high-quality master\'s thesis',
+          'Participated in multiple research projects',
+          'Developed rigorous research attitude'
+        ]
+      },
+      'Southern University of Science and Technology': {
+        title: 'Southern University of Science and Technology - Bachelor\'s Degree in Physics',
+        description: 'Completed Bachelor\'s degree in Physics at Southern University of Science and Technology, establishing solid foundation in physics and mathematics.',
+        details: [
+          'Major: Physics',
+          'Degree: Bachelor\'s Degree',
+          'Period: September 2014 - June 2018',
+          'Main Courses: Advanced Mathematics, Linear Algebra, Probability Theory, Physics Experiments',
+          'GPA: Excellent'
+        ],
+        achievements: [
+          'Gained solid foundation in mathematics and physics',
+          'Developed strong logical thinking abilities',
+          'Participated in multiple experimental projects'
+        ]
+      }
+    }
   }
 }

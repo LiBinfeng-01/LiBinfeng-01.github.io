@@ -38,7 +38,7 @@
         <div class="back-button">
           <router-link to="/" class="back-btn">
             <span class="back-arrow">←</span>
-            Head Back
+            {{ currentLocale.projectsPage.backButton }}
           </router-link>
         </div>
 
@@ -46,7 +46,7 @@
         <div class="projects-container">
           <!-- Career 部分 -->
           <section class="project-section">
-            <h2 class="section-title">Career</h2>
+            <h2 class="section-title">{{ currentLocale.projectsPage.career }}</h2>
             <div class="projects-grid career-grid">
               <ProjectCard 
                 v-for="project in careerProjects" 
@@ -58,7 +58,7 @@
 
           <!-- Technical Skills 部分 -->
           <section class="project-section">
-            <h2 class="section-title">Technical Skills</h2>
+            <h2 class="section-title">{{ currentLocale.projectsPage.technicalSkills }}</h2>
             <div class="projects-grid skills-grid">
               <ProjectCard 
                 v-for="project in freelanceProjects" 
@@ -70,7 +70,7 @@
 
           <!-- Education 部分 -->
           <section class="project-section">
-            <h2 class="section-title">Education & Certifications</h2>
+            <h2 class="section-title">{{ currentLocale.projectsPage.education }}</h2>
             <div class="projects-grid">
               <ProjectCard 
                 v-for="project in personalProjects" 
@@ -125,123 +125,6 @@ export default {
       ],
       // 颜色数组
       colors: ['#FF6B35', '#00D4AA', '#3ECF8E', '#FFD700', '#87CEEB', '#FF69B4'],
-      // 弹窗详细内容数据
-      modalDetails: {
-        // 职业经历详细内容
-        career: {
-          1: {
-            title: '深圳计算科学研究院 - 数据库优化器开发工程师',
-            description: '在YashanDB项目中负责数据库优化器模块开发，包括分布式优化器和与PostgreSQL的集成。参与了数据库架构的演进和优化。',
-            responsibilities: [
-              '负责YashanDB数据库优化器模块开发',
-              '实现了分布式优化器功能',
-              '开发了与PostgreSQL的集成模块',
-              '参与了数据库架构的演进设计',
-              '优化了行列执行引擎的兼容性',
-              '提供了技术支持和问题解决'
-            ],
-            technologies: ['C++', 'YashanDB', 'PostgreSQL', '分布式系统', '数据库优化'],
-            achievements: [
-              '成功实现了分布式优化器功能',
-              '完成了与PostgreSQL的深度集成',
-              '提升了数据库系统的整体性能',
-              '积累了丰富的分布式数据库开发经验'
-            ],
-            duration: '2020年11月 - 2023年02月'
-          },
-          2: {
-            title: '北京飞轮科技有限公司 - 数据库优化器开发工程师',
-            description: '在Apache Doris项目中负责数据库优化器模块开发，包括Outline、Hints、MiniDump等核心功能。作为核心开发人员，深度参与了数据库优化器的设计和实现。',
-            responsibilities: [
-              '负责Apache Doris数据库优化器模块的架构设计和开发',
-              '从零到一实现了Outline(SQL Plan Manager)模块',
-              '开发了数据库优化器Hints功能模块',
-              '实现了MiniDump(Plan Replayer)模块',
-              '与团队协作完成多个重要功能模块',
-              '参与代码审查和技术方案讨论'
-            ],
-            technologies: ['C++', 'Apache Doris', 'SQL优化', '查询优化器', '数据库内核'],
-            achievements: [
-              '成功交付了多个核心优化器模块',
-              '显著提升了数据库查询性能',
-              '为生产环境提供了稳定的性能保障',
-              '获得了团队和客户的高度认可'
-            ],
-            duration: '2023年03月 - 至今'
-          }
-        },
-        // 技术技能详细内容
-        skills: {
-          '编程语言': {
-            title: '编程语言',
-            description: '熟练掌握多种编程语言，具备扎实的编程基础和丰富的开发经验。',
-            details: [
-              'C/C++: 精通系统级编程，具备数据库内核开发经验',
-              'Java: 熟悉企业级应用开发，掌握Spring框架',
-              'Rust: 了解系统编程和内存安全编程',
-              'Python: 熟练使用数据分析和脚本开发'
-            ],
-            experience: '5年以上数据库系统开发经验'
-          },
-          '数据库技术': {
-            title: '数据库技术',
-            description: '专注于数据库优化器和查询处理技术，具备深厚的数据库理论基础。',
-            details: [
-              'Apache Doris: 深度参与优化器模块开发',
-              'YashanDB: 负责分布式优化器开发',
-              'PostgreSQL: 熟悉查询优化和扩展开发',
-              'SQL优化: 精通查询计划优化和性能调优'
-            ],
-            experience: '3年以上数据库优化器开发经验'
-          },
-          '开发环境': {
-            title: '开发环境',
-            description: '熟练使用各种开发工具和环境，具备高效的开发工作流程。',
-            details: [
-              'Linux: 精通Linux系统管理和开发环境配置',
-              'Git: 熟练使用版本控制和协作开发',
-              'Docker: 掌握容器化部署和开发',
-              '性能分析: 熟练使用各种性能分析工具'
-            ],
-            experience: '5年以上Linux开发经验'
-          }
-        },
-        // 教育背景详细内容
-        education: {
-          '哈尔滨工业大学': {
-            title: '哈尔滨工业大学 - 物理学硕士',
-            description: '在哈尔滨工业大学攻读物理学硕士学位，培养了严谨的科学思维和扎实的理论基础。',
-            details: [
-              '专业: 物理学',
-              '学位: 硕士学位',
-              '时间: 2018年09月 - 2020年08月',
-              '研究方向: 理论物理和计算物理',
-              '主要课程: 量子力学、统计物理、计算物理'
-            ],
-            achievements: [
-              '完成了高质量的硕士论文',
-              '参与了多个科研项目',
-              '培养了严谨的科研态度'
-            ]
-          },
-          '南方科技大学': {
-            title: '南方科技大学 - 物理学学士',
-            description: '在南方科技大学完成物理学本科学位，建立了扎实的物理和数学基础。',
-            details: [
-              '专业: 物理学',
-              '学位: 学士学位',
-              '时间: 2014年09月 - 2018年06月',
-              '主要课程: 高等数学、线性代数、概率论、物理实验',
-              'GPA: 优秀'
-            ],
-            achievements: [
-              '获得了扎实的数学和物理基础',
-              '培养了良好的逻辑思维能力',
-              '参与了多个实验项目'
-            ]
-          }
-        }
-      }
     }
   },
   computed: {
@@ -250,7 +133,7 @@ export default {
     },
     careerProjects() {
       return this.currentLocale.experience.map((experience, index) => {
-        const details = this.modalDetails.career[experience.id] || {}
+        const details = this.currentLocale.modalDetails?.career?.[experience.id] || {}
         return {
           id: experience.id,
           name: experience.company,
@@ -271,7 +154,7 @@ export default {
     },
     freelanceProjects() {
       return this.currentLocale.skills.map((skill, index) => {
-        const details = this.modalDetails.skills[skill.category] || {}
+        const details = this.currentLocale.modalDetails?.skills?.[skill.category] || {}
         const descriptionText = this.currentLanguage === 'zh' 
           ? `在${skill.category}方面拥有丰富的实践经验，熟练掌握相关技术栈。`
           : `Extensive practical experience in ${skill.category}, proficient in related technology stacks.`
@@ -293,7 +176,7 @@ export default {
     },
     personalProjects() {
       return this.currentLocale.education.map((edu, index) => {
-        const details = this.modalDetails.education[edu.school] || {}
+        const details = this.currentLocale.modalDetails?.education?.[edu.school] || {}
         return {
           id: index + 20,
           name: edu.school,
