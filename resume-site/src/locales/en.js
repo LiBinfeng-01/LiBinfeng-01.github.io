@@ -52,7 +52,7 @@ export default {
       position: 'Database Optimizer Developer',
       company: 'Shenzhen Institute of Computing Science',
       duration: 'November 2020 - February 2023',
-      description: 'Responsible for YashanDB database optimizer module development, including distributed optimizers and integration with PostgreSQL. Participated in database architecture evolution and optimization.',
+      description: 'The institute is committed to advancing fundamental research in China, developing core computing systems, and taking global lead in research areas in connection with big data analytics..',
       responsibilities: [
         'Responsible for YashanDB database optimizer module development',
         'Implemented distributed optimizer functionality',
@@ -149,9 +149,9 @@ export default {
     career: {
       1: {
         title: 'Shenzhen Institute of Computing Science - Database Optimizer Developer',
-        description: 'Responsible for YashanDB database optimizer module development, including distributed optimizers and integration with PostgreSQL. Participated in database architecture evolution and optimization.',
+        description: 'The institute is committed to advancing fundamental research in China, developing core computing systems, and taking global lead in research areas in connection with big data analytics..',
         responsibilities: [
-          'Responsible for YashanDB database optimizer module development',
+          'I work with the Database Optimizer Team and responsible for YashanDB database optimizer module development. ',
           'Implemented distributed optimizer functionality',
           'Developed integration modules with PostgreSQL',
           'Participated in database architecture evolution design',
