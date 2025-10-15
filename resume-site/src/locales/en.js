@@ -29,21 +29,29 @@ export default {
   projectsPage: {
     backButton: 'Head Back',
     career: 'Career',
-    technicalSkills: 'Technical Skills',
-    education: 'Education & Certifications'
+    internalProjects: 'Internal Projects',
+    openSourceProjects: 'Open Source Projects'
   },
   skills: [
     {
-      category: 'Programming Languages',
-      items: ['C/C++', 'Java', 'Rust', 'Python', 'SQL', 'Shell Scripting']
+      category: 'Doris Outline (SQL Plan Manager)',
+      items: ['C++', 'Apache Doris', 'SQL Optimization', 'Execution Plan Management']
     },
     {
-      category: 'Database Technologies',
-      items: ['Apache Doris', 'YashanDB', 'PostgreSQL', 'SQL Optimization', 'Query Optimizer', 'Distributed Databases', 'Database Kernel Development']
+      category: 'Doris Database Optimizer Hints Module',
+      items: ['C++', 'Apache Doris', 'Hints', 'Query Optimization', 'Performance Tuning']
     },
     {
-      category: 'Development Environment',
-      items: ['Linux', 'Git', 'Docker', 'Database Tuning', 'Performance Analysis', 'Debugging Tools', 'Version Control', 'CI/CD']
+      category: 'Doris Database Optimizer MiniDump Module',
+      items: ['C++', 'Apache Doris', 'MiniDump', 'Issue Diagnosis', 'Environment Collection']
+    },
+    {
+      category: 'Yashan Database Optimizer Distributed Module',
+      items: ['C++', 'YashanDB', 'Distributed Optimization', 'Architecture Design']
+    },
+    {
+      category: 'Yashan Database Optimizer Integration Module',
+      items: ['C++', 'YashanDB', 'PostgreSQL', 'Execution Engine', 'Compatibility']
     }
   ],
   experience: [
@@ -95,17 +103,12 @@ export default {
   education: [
     {
       id: 1,
-      degree: 'Master\'s Degree in Physics',
-      school: 'Harbin Institute of Technology',
-      period: 'September 2018 - August 2020',
-      description: 'Pursued Master\'s degree in Physics at Harbin Institute of Technology, developing rigorous scientific thinking and solid theoretical foundation. Main research focus on theoretical physics and computational physics, completed high-quality master\'s thesis.'
-    },
-    {
-      id: 2,
-      degree: 'Bachelor\'s Degree in Physics',
-      school: 'Southern University of Science and Technology',
-      period: 'September 2014 - June 2018',
-      description: 'Completed Bachelor\'s degree in Physics at Southern University of Science and Technology, establishing solid foundation in physics and mathematics. Main courses included Advanced Mathematics, Linear Algebra, Probability Theory, Physics Experiments, developing strong logical thinking abilities.'
+      degree: 'CBO Optimizer',
+      school: 'CSO-Demo Cascade-Style Optimizer',
+      period: '2023 - Present',
+      description: 'Developed the CBO optimizer module from scratch, enabling plan enumeration and cost-based plan selection. Currently supports index plan selection.',
+      url: 'https://github.com/nothing-new-labs/cso-demo',
+      documentation: 'https://nothing-newlabs.github.io/'
     }
   ],
   projects: [
@@ -221,75 +224,86 @@ export default {
         duration: 'May 2025 - Present'
       }
     },
-    // Technical skills detailed content
+    // Internal projects detailed content
     skills: {
-      'Programming Languages': {
-        title: 'Programming Languages',
-        description: 'Proficient in multiple programming languages with solid programming foundation and extensive development experience.',
+      'Doris Outline (SQL Plan Manager)': {
+        title: 'Doris Outline (SQL Plan Manager)',
+        description: 'Implemented the Doris Outline module from scratch to fix execution plans and avoid performance fluctuations.',
         details: [
-          'C/C++: Expert in system-level programming with database kernel development experience',
-          'Java: Familiar with enterprise application development, mastering Spring framework',
-          'Rust: Understanding of systems programming and memory-safe programming',
-          'Python: Proficient in data analysis and script development'
+          'Designed and implemented SQL Plan Manager module from scratch',
+          'Implemented execution plan fixation and caching mechanisms',
+          'Avoided query performance fluctuations and improved system stability',
+          'Supported execution plan management for complex queries'
         ],
-        experience: '5+ years of database system development experience'
+        experience: '2023 - Present',
+        url: 'https://doris.apache.org/docs/query-acceleration/hints/hints-overview'
       },
-      'Database Technologies': {
-        title: 'Database Technologies',
-        description: 'Specialized in database optimizer and query processing technologies with deep database theoretical foundation.',
+      'Doris Database Optimizer Hints Module': {
+        title: 'Doris Database Optimizer Hints Module',
+        description: 'Designed and implemented hint functionality for the Doris CBO optimizer, enabling user-defined join plan selection for performance tuning.',
         details: [
-          'Apache Doris: Deep involvement in optimizer module development',
-          'YashanDB: Responsible for distributed optimizer development',
-          'PostgreSQL: Familiar with query optimization and extension development',
-          'SQL Optimization: Expert in query plan optimization and performance tuning'
+          'Designed and implemented CBO optimizer hint functionality',
+          'Enabled user-defined join plan selection',
+          'Provided flexible performance tuning options',
+          'Deeply integrated with existing optimizer architecture'
         ],
-        experience: '3+ years of database optimizer development experience'
+        experience: '2023 - Present',
+        url: 'https://doris.apache.org/docs/query-acceleration/hints/hints-overview'
       },
-      'Development Environment': {
-        title: 'Development Environment',
-        description: 'Proficient in various development tools and environments with efficient development workflow.',
+      'Doris Database Optimizer MiniDump Module': {
+        title: 'Doris Database Optimizer MiniDump Module',
+        description: 'Built a one-click environment information collection tool to streamline customer issue analysis. Just like minidump in gporca.',
         details: [
-          'Linux: Expert in Linux system administration and development environment configuration',
-          'Git: Proficient in version control and collaborative development',
-          'Docker: Master containerized deployment and development',
-          'Performance Analysis: Proficient in various performance analysis tools'
+          'Implemented one-click environment information collection tool',
+          'Simplified customer issue analysis and diagnosis process',
+          'Provided complete execution plan replay functionality',
+          'Similar to minidump functionality in gporca'
         ],
-        experience: '5+ years of Linux development experience'
+        experience: '2023 - Present'
+      },
+      'Yashan Database Optimizer Distributed Module': {
+        title: 'Yashan Database Optimizer Distributed Module',
+        description: 'Delivered two implementations of distributed optimization capabilities to align with architectural evolution.',
+        details: [
+          'Implemented core distributed optimizer functionality',
+          'Supported two implementation approaches for architectural evolution',
+          'Provided distributed query optimization capabilities',
+          'Ensured system architecture flexibility and scalability'
+        ],
+        experience: '2020 - 2023'
+      },
+      'Yashan Database Optimizer Integration Module': {
+        title: 'Yashan Database Optimizer Integration Module',
+        description: 'Enabled compatibility between row-based and columnar execution engines.',
+        details: [
+          'Implemented deep integration with PostgreSQL',
+          'Supported compatibility between row and column execution engines',
+          'Ensured coordination between different execution engines',
+          'Provided unified query processing interface'
+        ],
+        experience: '2020 - 2023'
       }
     },
-    // Education background detailed content
+    // Open source projects detailed content
     education: {
-      'Harbin Institute of Technology': {
-        title: 'Harbin Institute of Technology - Master\'s Degree in Physics',
-        description: 'Pursued Master\'s degree in Physics at Harbin Institute of Technology, developing rigorous scientific thinking and solid theoretical foundation.',
+      'CSO-Demo Cascade-Style Optimizer': {
+        title: 'CSO-Demo Cascade-Style Optimizer',
+        description: 'Developed the CBO optimizer module from scratch, enabling plan enumeration and cost-based plan selection. Currently supports index plan selection.',
         details: [
-          'Major: Physics',
-          'Degree: Master\'s Degree',
-          'Period: September 2018 - August 2020',
-          'Research Focus: Theoretical Physics and Computational Physics',
-          'Main Courses: Quantum Mechanics, Statistical Physics, Computational Physics'
+          'Project Type: Open Source Project',
+          'Development Language: C++',
+          'Project Period: 2023 - Present',
+          'Core Features: CBO Optimizer, Plan Enumeration, Cost Calculation',
+          'Current Status: Supports index plan selection'
         ],
         achievements: [
-          'Completed high-quality master\'s thesis',
-          'Participated in multiple research projects',
-          'Developed rigorous research attitude'
-        ]
-      },
-      'Southern University of Science and Technology': {
-        title: 'Southern University of Science and Technology - Bachelor\'s Degree in Physics',
-        description: 'Completed Bachelor\'s degree in Physics at Southern University of Science and Technology, establishing solid foundation in physics and mathematics.',
-        details: [
-          'Major: Physics',
-          'Degree: Bachelor\'s Degree',
-          'Period: September 2014 - June 2018',
-          'Main Courses: Advanced Mathematics, Linear Algebra, Probability Theory, Physics Experiments',
-          'GPA: Excellent'
+          'Designed and implemented CBO optimizer from scratch',
+          'Implemented complete plan enumeration functionality',
+          'Supported cost-based plan selection',
+          'Open source project contributing to the community'
         ],
-        achievements: [
-          'Gained solid foundation in mathematics and physics',
-          'Developed strong logical thinking abilities',
-          'Participated in multiple experimental projects'
-        ]
+        url: 'https://github.com/nothing-new-labs/cso-demo',
+        documentation: 'https://nothing-newlabs.github.io/'
       }
     }
   }

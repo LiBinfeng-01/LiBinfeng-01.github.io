@@ -24,7 +24,12 @@
         <div class="modal-header">
           <h2 class="modal-title">
             {{ project.name }}
-            <span v-if="project.url" class="modal-link-icon">🔗</span>
+            <span v-if="project.url" class="modal-link-icon" @click="openLink" title="点击访问项目链接">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
           </h2>
           <p class="modal-date">{{ project.duration || ($parent.currentLanguage === 'zh' ? '项目时间' : 'Project Duration') }}</p>
           <div class="modal-meta">
@@ -83,6 +88,11 @@ export default {
     closeModal() {
       this.showModal = false
       document.body.style.overflow = 'auto' // 恢复滚动
+    },
+    openLink() {
+      if (this.project.url) {
+        window.open(this.project.url, '_blank')
+      }
     }
   },
   beforeUnmount() {
@@ -271,8 +281,37 @@ export default {
 }
 
 .modal-link-icon {
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   opacity: 0.7;
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 6px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  margin-left: 12px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-link-icon:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.modal-link-icon:active {
+  transform: scale(0.95);
+}
+
+.modal-link-icon svg {
+  width: 16px;
+  height: 16px;
 }
 
 .modal-date {

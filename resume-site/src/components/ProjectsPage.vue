@@ -56,24 +56,24 @@
             </div>
           </section>
 
-          <!-- Technical Skills 部分 -->
+          <!-- Internal Projects 部分 -->
           <section class="project-section">
-            <h2 class="section-title">{{ currentLocale.projectsPage.technicalSkills }}</h2>
-            <div class="projects-grid skills-grid">
+            <h2 class="section-title">{{ currentLocale.projectsPage.internalProjects }}</h2>
+            <div class="projects-grid internal-projects-grid">
               <ProjectCard 
-                v-for="project in freelanceProjects" 
+                v-for="project in internalProjects" 
                 :key="project.id"
                 :project="project"
               />
             </div>
           </section>
 
-          <!-- Education 部分 -->
+          <!-- Open Source Projects 部分 -->
           <section class="project-section">
-            <h2 class="section-title">{{ currentLocale.projectsPage.education }}</h2>
+            <h2 class="section-title">{{ currentLocale.projectsPage.openSourceProjects }}</h2>
             <div class="projects-grid">
               <ProjectCard 
-                v-for="project in personalProjects" 
+                v-for="project in openSourceProjects" 
                 :key="project.id"
                 :project="project"
               />
@@ -92,6 +92,7 @@ import enLocale from '../locales/en.js'
 import yashandbLogo from '../assets/yashandb-logo.jpg'
 import sicsLogo from '../assets/sics-logo.jpg'
 import selectdbLogo from '../assets/selectdb-logo.jpg'
+import dorisLogo from '../assets/doris-logo.jpg'
 
 export default {
   name: 'ProjectsPage',
@@ -111,19 +112,41 @@ export default {
         selectdbLogo,
         yashandbLogo
       ],
-      // 技能相关图片
-      skillImages: [
-        'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop', // 编程技能
-        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop', // 技术栈
-        'https://images.unsplash.com/photo-1461749280684-dccba25e3f12?w=400&h=300&fit=crop'  // 开发环境
-      ],
-      // 教育背景图片
-      educationImages: [
-        'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop', // 大学校园
-        'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop'  // 学术研究
+      // 内部项目相关图片
+      internalProjectImages: [
+        dorisLogo,dorisLogo,dorisLogo,yashandbLogo,yashandbLogo],
+      // 开源项目相关图片
+      openSourceProjectImages: [
+        'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop', // 开源贡献  // 社区项目
       ],
       // 颜色数组
       colors: ['#FF6B35', '#00D4AA', '#3ECF8E', '#FFD700', '#87CEEB', '#FF69B4'],
+      // 项目URL映射
+      projectUrls: {
+        // 职业经历URL
+        career: {
+          1: 'https://www.sics.ac.cn/', // 深圳计算科学研究院
+          2: 'https://www.selectdb.com/', // Apache Doris
+          3: 'https://www.yashandb.com/' // 崖山科技
+        },
+        // 内部项目URL
+        internal: {
+          'Doris Outline (SQL Plan Manager)': 'https://doris.apache.org/zh-CN/docs/query-acceleration/outline/outline-overview',
+          'Doris数据库优化器Hints模块': 'https://doris.apache.org/zh-CN/docs/query-acceleration/hints/hints-overview',
+          'Doris Database Optimizer Hints Module': 'https://doris.apache.org/docs/query-acceleration/hints/hints-overview',
+          'Doris数据库优化器MiniDump模块': 'https://doris.apache.org/zh-CN/docs/query-acceleration/plan-replayer/plan-replayer-overview',
+          'Doris Database Optimizer MiniDump Module': 'https://doris.apache.org/docs/query-acceleration/plan-replayer/plan-replayer-overview',
+          'Yashan数据库优化器分布式模块': 'https://www.yashandb.com/',
+          'Yashan Database Optimizer Distributed Module': 'https://www.yashandb.com/',
+          'Yashan数据库优化器集成模块': 'https://www.yashandb.com/',
+          'Yashan Database Optimizer Integration Module': 'https://www.yashandb.com/'
+        },
+        // 开源项目URL
+        openSource: {
+          'CSO-Demo Cascade风格优化器': 'https://github.com/nothing-new-labs/cso-demo',
+          'CSO-Demo Cascade-Style Optimizer': 'https://github.com/nothing-new-labs/cso-demo'
+        }
+      },
     }
   },
   computed: {
@@ -141,7 +164,7 @@ export default {
           technologies: details.technologies || [],
           responsibilities: details.responsibilities || experience.responsibilities || [],
           achievements: details.achievements || [],
-          url: details.url || '',
+          url: this.projectUrls.career[experience.id] || '',
           duration: details.duration || experience.duration,
           industry: this.currentLanguage === 'zh' ? '数据库技术' : 'Database Technology',
           backgroundImage: this.careerImages[index % this.careerImages.length],
@@ -151,12 +174,12 @@ export default {
         }
       })
     },
-    freelanceProjects() {
+    internalProjects() {
       return this.currentLocale.skills.map((skill, index) => {
         const details = this.currentLocale.modalDetails?.skills?.[skill.category] || {}
         const descriptionText = this.currentLanguage === 'zh' 
-          ? `在${skill.category}方面拥有丰富的实践经验，熟练掌握相关技术栈。`
-          : `Extensive practical experience in ${skill.category}, proficient in related technology stacks.`
+          ? `内部项目：在${skill.category}方面拥有丰富的实践经验，熟练掌握相关技术栈。`
+          : `Internal Project: Extensive practical experience in ${skill.category}, proficient in related technology stacks.`
         return {
           id: index + 10,
           name: skill.category,
@@ -166,14 +189,15 @@ export default {
           details: details.details || [],
           experience: details.experience || '',
           duration: details.experience || (this.currentLanguage === 'zh' ? '持续学习' : 'Continuous Learning'),
-          industry: this.currentLanguage === 'zh' ? '技术技能' : 'Technical Skills',
-          backgroundImage: this.skillImages[index % this.skillImages.length],
+          industry: this.currentLanguage === 'zh' ? '内部项目' : 'Internal Projects',
+          backgroundImage: this.internalProjectImages[index % this.internalProjectImages.length],
           logo: '',
-          logoColor: this.colors[(index + 2) % this.colors.length]
+          logoColor: this.colors[(index + 2) % this.colors.length],
+          url: this.projectUrls.internal[skill.category] || ''
         }
       })
     },
-    personalProjects() {
+    openSourceProjects() {
       return this.currentLocale.education.map((edu, index) => {
         const details = this.currentLocale.modalDetails?.education?.[edu.school] || {}
         return {
@@ -185,10 +209,11 @@ export default {
           details: details.details || [],
           achievements: details.achievements || [],
           duration: edu.period,
-          industry: this.currentLanguage === 'zh' ? '教育背景' : 'Education Background',
-          backgroundImage: this.educationImages[index % this.educationImages.length],
+          industry: this.currentLanguage === 'zh' ? '开源项目' : 'Open Source Projects',
+          backgroundImage: this.openSourceProjectImages[index % this.openSourceProjectImages.length],
           logo: '',
-          logoColor: this.colors[(index + 4) % this.colors.length]
+          logoColor: this.colors[(index + 4) % this.colors.length],
+          url: this.projectUrls.openSource[edu.school] || ''
         }
       })
     }
@@ -241,8 +266,8 @@ export default {
   grid-template-columns: repeat(3, 1fr);
 }
 
-/* Technical Skills部分 - 2x3网格 */
-.skills-grid {
+/* Internal Projects部分 - 2x3网格 */
+.internal-projects-grid {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
 }
@@ -290,7 +315,7 @@ export default {
     grid-template-columns: repeat(2, 1fr);
   }
   
-  .skills-grid {
+  .internal-projects-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
@@ -306,7 +331,7 @@ export default {
     grid-template-columns: 1fr;
   }
   
-  .skills-grid {
+  .internal-projects-grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
   }

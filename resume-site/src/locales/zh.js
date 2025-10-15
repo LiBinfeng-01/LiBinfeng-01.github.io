@@ -29,21 +29,29 @@ export default {
   projectsPage: {
     backButton: '返回首页',
     career: '职业经历',
-    commercialProjects: '技术技能',
-    education: '教育背景'
+    internalProjects: '内部项目',
+    openSourceProjects: '开源项目'
   },
   skills: [
     {
-      category: '编程语言',
-      items: ['C/C++', 'Java', 'Rust', 'Python', 'SQL', 'Shell脚本']
+      category: 'Doris Outline (SQL Plan Manager)',
+      items: ['C++', 'Apache Doris', 'SQL优化', '执行计划管理']
     },
     {
-      category: '数据库技术',
-      items: ['Apache Doris', 'YashanDB', 'PostgreSQL', 'SQL优化', '查询优化器', '分布式数据库', '数据库内核开发']
+      category: 'Doris数据库优化器Hints模块',
+      items: ['C++', 'Apache Doris', 'Hints', '查询优化', '性能调优']
     },
     {
-      category: '开发环境',
-      items: ['Linux', 'Git', 'Docker', '数据库调优', '性能分析', '调试工具', '版本控制', 'CI/CD']
+      category: 'Doris数据库优化器MiniDump模块',
+      items: ['C++', 'Apache Doris', 'MiniDump', '问题诊断', '环境收集']
+    },
+    {
+      category: 'Yashan数据库优化器分布式模块',
+      items: ['C++', 'YashanDB', '分布式优化', '架构设计']
+    },
+    {
+      category: 'Yashan数据库优化器集成模块',
+      items: ['C++', 'YashanDB', 'PostgreSQL', '执行引擎', '兼容性']
     }
   ],
   experience: [
@@ -95,17 +103,12 @@ export default {
   education: [
     {
       id: 1,
-      degree: '物理学 硕士',
-      school: '哈尔滨工业大学',
-      period: '2018年09月 - 2020年08月',
-      description: '在哈尔滨工业大学攻读物理学硕士学位，培养了严谨的科学思维和扎实的理论基础。主要研究方向为理论物理和计算物理，完成了高质量的硕士论文。'
-    },
-    {
-      id: 2,
-      degree: '物理学 学士',
-      school: '南方科技大学',
-      period: '2014年09月 - 2018年06月',
-      description: '在南方科技大学完成物理学本科学位，建立了扎实的物理和数学基础。主要课程包括高等数学、线性代数、概率论、物理实验等，培养了良好的逻辑思维能力。'
+      degree: 'CBO优化器',
+      school: 'CSO-Demo Cascade风格优化器',
+      period: '2023年 - 至今',
+      description: '从零到一实现了cbo优化器模块，能够进行计划枚举，根据cost进行计划选择。目前实现了index计划选择。',
+      url: 'https://github.com/nothing-new-labs/cso-demo',
+      documentation: 'https://nothing-newlabs.github.io/'
     }
   ],
   projects: [
@@ -216,75 +219,86 @@ export default {
         duration: '2025年05月 - 至今'
       }
     },
-    // 技术技能详细内容
+    // 内部项目详细内容
     skills: {
-      '编程语言': {
-        title: '编程语言',
-        description: '熟练掌握多种编程语言，具备扎实的编程基础和丰富的开发经验。',
+      'Doris Outline (SQL Plan Manager)': {
+        title: 'Doris Outline (SQL Plan Manager)',
+        description: '从零到一实现了doris outline(SQL PLAN MANAGER)模块，能够固定执行计划来避免性能出现波动。',
         details: [
-          'C/C++: 精通系统级编程，具备数据库内核开发经验',
-          'Java: 熟悉企业级应用开发，掌握Spring框架',
-          'Rust: 了解系统编程和内存安全编程',
-          'Python: 熟练使用数据分析和脚本开发'
+          '从零开始设计和实现SQL Plan Manager模块',
+          '实现执行计划的固定和缓存机制',
+          '避免查询性能波动，提升系统稳定性',
+          '支持复杂查询的执行计划管理'
         ],
-        experience: '5年以上数据库系统开发经验'
+        experience: '2023年 - 至今',
+        url: 'https://doris.apache.org/zh-CN/docs/query-acceleration/hints/hints-overview'
       },
-      '数据库技术': {
-        title: '数据库技术',
-        description: '专注于数据库优化器和查询处理技术，具备深厚的数据库理论基础。',
+      'Doris数据库优化器Hints模块': {
+        title: 'Doris数据库优化器Hints模块',
+        description: '实现了doris数据库cbo优化器hint功能，能够根据用户设定进行自定义的join计划选择，进行调优。',
         details: [
-          'Apache Doris: 深度参与优化器模块开发',
-          'YashanDB: 负责分布式优化器开发',
-          'PostgreSQL: 熟悉查询优化和扩展开发',
-          'SQL优化: 精通查询计划优化和性能调优'
+          '设计和实现CBO优化器hint功能',
+          '支持用户自定义join计划选择',
+          '提供灵活的性能调优选项',
+          '与现有优化器架构深度集成'
         ],
-        experience: '3年以上数据库优化器开发经验'
+        experience: '2023年 - 至今',
+        url: 'https://doris.apache.org/zh-CN/docs/query-acceleration/hints/hints-overview'
       },
-      '开发环境': {
-        title: '开发环境',
-        description: '熟练使用各种开发工具和环境，具备高效的开发工作流程。',
+      'Doris数据库优化器MiniDump模块': {
+        title: 'Doris数据库优化器MiniDump模块',
+        description: '开发doris数据库优化器模块minidump(PLAN REPLAYER)模块，能够一键式收集环境信息，使得分析客户问题更加便捷。',
         details: [
-          'Linux: 精通Linux系统管理和开发环境配置',
-          'Git: 熟练使用版本控制和协作开发',
-          'Docker: 掌握容器化部署和开发',
-          '性能分析: 熟练使用各种性能分析工具'
+          '实现一键式环境信息收集工具',
+          '简化客户问题分析和诊断流程',
+          '提供完整的执行计划重放功能',
+          '类似gporca的minidump功能'
         ],
-        experience: '5年以上Linux开发经验'
+        experience: '2023年 - 至今'
+      },
+      'Yashan数据库优化器分布式模块': {
+        title: 'Yashan数据库优化器分布式模块',
+        description: '崖山数据库优化器模块分布式模块能力，由于架构的演变分别有两种实现。',
+        details: [
+          '实现分布式优化器核心功能',
+          '支持架构演进的两种实现方案',
+          '提供分布式查询优化能力',
+          '确保系统架构的灵活性和可扩展性'
+        ],
+        experience: '2020年 - 2023年'
+      },
+      'Yashan数据库优化器集成模块': {
+        title: 'Yashan数据库优化器集成模块',
+        description: '崖山数据库优化器模块对接postgresql与yashan执行引擎，使得行列执行引擎分别可以跑通。',
+        details: [
+          '实现与PostgreSQL的深度集成',
+          '支持行列执行引擎的兼容性',
+          '确保不同执行引擎的协调工作',
+          '提供统一的查询处理接口'
+        ],
+        experience: '2020年 - 2023年'
       }
     },
-    // 教育背景详细内容
+    // 开源项目详细内容
     education: {
-      '哈尔滨工业大学': {
-        title: '哈尔滨工业大学 - 物理学硕士',
-        description: '在哈尔滨工业大学攻读物理学硕士学位，培养了严谨的科学思维和扎实的理论基础。',
+      'CSO-Demo Cascade风格优化器': {
+        title: 'CSO-Demo Cascade风格优化器',
+        description: '从零到一实现了cbo优化器模块，能够进行计划枚举，根据cost进行计划选择。目前实现了index计划选择。',
         details: [
-          '专业: 物理学',
-          '学位: 硕士学位',
-          '时间: 2018年09月 - 2020年08月',
-          '研究方向: 理论物理和计算物理',
-          '主要课程: 量子力学、统计物理、计算物理'
+          '项目类型: 开源项目',
+          '开发语言: C++',
+          '项目时间: 2023年 - 至今',
+          '核心功能: CBO优化器、计划枚举、成本计算',
+          '当前状态: 支持index计划选择'
         ],
         achievements: [
-          '完成了高质量的硕士论文',
-          '参与了多个科研项目',
-          '培养了严谨的科研态度'
-        ]
-      },
-      '南方科技大学': {
-        title: '南方科技大学 - 物理学学士',
-        description: '在南方科技大学完成物理学本科学位，建立了扎实的物理和数学基础。',
-        details: [
-          '专业: 物理学',
-          '学位: 学士学位',
-          '时间: 2014年09月 - 2018年06月',
-          '主要课程: 高等数学、线性代数、概率论、物理实验',
-          'GPA: 优秀'
+          '从零开始设计和实现CBO优化器',
+          '实现了完整的计划枚举功能',
+          '支持基于成本的计划选择',
+          '开源项目，为社区贡献代码'
         ],
-        achievements: [
-          '获得了扎实的数学和物理基础',
-          '培养了良好的逻辑思维能力',
-          '参与了多个实验项目'
-        ]
+        url: 'https://github.com/nothing-new-labs/cso-demo',
+        documentation: 'https://nothing-newlabs.github.io/'
       }
     }
   }
