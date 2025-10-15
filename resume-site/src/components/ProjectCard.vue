@@ -248,16 +248,16 @@ export default {
 
 /* Logo图片在弹窗中的特殊样式 */
 .modal-logo-image {
-  background-size: contain !important;
+  background-size: cover !important;
   background-color: #ffffff !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  padding: 80px 60px;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 300px;
-  max-height: 400px;
+  min-height: 100%;
+  height: 100%;
 }
 
 
