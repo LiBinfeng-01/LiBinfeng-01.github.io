@@ -106,11 +106,10 @@ export default {
         en: enLocale
       },
       // 背景图片数组 - 数据库相关图片
-      databaseImages: [
-        sicsLogo, // YashanDB Logo - 第一张卡片
+      careerImages: [
+        sicsLogo,
         selectdbLogo,
-        'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop', // 代码编程
-        'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=300&fit=crop'  // 数据分析
+        yashandbLogo
       ],
       // 技能相关图片
       skillImages: [
@@ -145,7 +144,7 @@ export default {
           url: details.url || '',
           duration: details.duration || experience.duration,
           industry: this.currentLanguage === 'zh' ? '数据库技术' : 'Database Technology',
-          backgroundImage: this.databaseImages[index % this.databaseImages.length],
+          backgroundImage: this.careerImages[index % this.careerImages.length],
           logo: '',
           logoColor: this.colors[index % this.colors.length],
           isLogo: index === 0 // 第一张卡片（YashanDB）使用logo样式

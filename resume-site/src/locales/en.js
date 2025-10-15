@@ -66,7 +66,7 @@ export default {
       id: 2,
       position: 'Database Optimizer Developer',
       company: 'Beijing Feilun Technology Co., Ltd.',
-      duration: 'March 2023 - Present',
+      duration: 'March 2023 - April 2025',
       description: 'Responsible for Apache Doris database optimizer module development, including Outline, Hints, MiniDump and other core functionalities. As a core developer, deeply involved in the design and implementation of database optimizers.',
       responsibilities: [
         'Responsible for architecture design and development of Apache Doris database optimizer modules',
@@ -75,6 +75,20 @@ export default {
         'Implemented MiniDump (Plan Replayer) module',
         'Collaborated with team to complete multiple important functional modules',
         'Participated in code reviews and technical solution discussions'
+      ]
+    },
+    {
+      id: 3,
+      position: 'Full Stack Developer',
+      company: 'Shenzhen Yashan Technology Co., Ltd.',
+      duration: 'May 2025 - Present',
+      description: 'Shenzhen Yashan Technology Co., Ltd. (Yashan Technology) is a commercial company incubated by Shenzhen Institute of Computing Science and directly established by the YashanDB team. The company adheres to a fully self-developed engineering practice model, dedicated to innovation, development, sales and services of YashanDB, building China\'s original basic software brand.',
+      responsibilities: [
+        'Responsible for full-stack development of YashanDB related products',
+        'Participated in product innovation and development',
+        'Collaborated with the YashanDB team on technical solutions',
+        'Contributed to building China\'s original basic software brand',
+        'Engaged in sales and service support activities'
       ]
     }
   ],
@@ -185,7 +199,26 @@ export default {
           'Provided stable performance guarantees for production environments',
           'Received high recognition from team and customers'
         ],
-        duration: 'March 2023 - Present'
+        duration: 'March 2023 - April 2025'
+      },
+      3: {
+        title: 'Shenzhen Yashan Technology Co., Ltd. - Full Stack Developer',
+        description: 'Shenzhen Yashan Technology Co., Ltd. (Yashan Technology) is a commercial company incubated by Shenzhen Institute of Computing Science and directly established by the YashanDB team. The company adheres to a fully self-developed engineering practice model, dedicated to innovation, development, sales and services of YashanDB, building China\'s original basic software brand.',
+        responsibilities: [
+          'Responsible for full-stack development of YashanDB related products',
+          'Participated in product innovation and development',
+          'Collaborated with the YashanDB team on technical solutions',
+          'Contributed to building China\'s original basic software brand',
+          'Engaged in sales and service support activities'
+        ],
+        technologies: ['Full Stack Development', 'YashanDB', 'Database Technology', 'Product Development', 'Sales & Service'],
+        achievements: [
+          'Contributed to YashanDB product development and innovation',
+          'Participated in building China\'s original basic software brand',
+          'Collaborated effectively with the YashanDB team',
+          'Engaged in comprehensive product lifecycle activities'
+        ],
+        duration: 'May 2025 - Present'
       }
     },
     // Technical skills detailed content

@@ -29,7 +29,7 @@ export default {
   projectsPage: {
     backButton: '返回首页',
     career: '职业经历',
-    technicalSkills: '技术技能',
+    commercialProjects: '技术技能',
     education: '教育背景'
   },
   skills: [
@@ -66,7 +66,7 @@ export default {
       id: 2,
       position: '数据库优化器开发工程师',
       company: '北京飞轮科技有限公司',
-      duration: '2023年03月 - 至今',
+      duration: '2023年03月 - 2025年04月',
       description: '在Apache Doris项目中负责数据库优化器模块开发，包括Outline、Hints、MiniDump等核心功能。作为核心开发人员，深度参与了数据库优化器的设计和实现。',
       responsibilities: [
         '负责Apache Doris数据库优化器模块的架构设计和开发',
@@ -75,6 +75,20 @@ export default {
         '实现了MiniDump(Plan Replayer)模块',
         '与团队协作完成多个重要功能模块',
         '参与代码审查和技术方案讨论'
+      ]
+    },
+    {
+      id: 3,
+      position: '全栈开发工程师',
+      company: '深圳崖山科技有限公司',
+      duration: '2025年05月 - 至今',
+      description: '深圳崖山科技有限公司(简称:崖山科技)是由深圳计算科学研究院孵化，并由YashanDB团队直接组建设立的商业公司，公司坚持全自研工程实践的模式，致力于YashanDB的创新、开发、销售和服务等，打造中国原创的基础软件品牌。',
+      responsibilities: [
+        '负责YashanDB相关产品的全栈开发',
+        '参与产品创新和开发工作',
+        '与YashanDB团队协作技术方案',
+        '为建设中国原创的基础软件品牌贡献力量',
+        '参与销售和服务支持活动'
       ]
     }
   ],
@@ -180,7 +194,26 @@ export default {
           '为生产环境提供了稳定的性能保障',
           '获得了团队和客户的高度认可'
         ],
-        duration: '2023年03月 - 至今'
+        duration: '2023年03月 - 2025年04月'
+      },
+      3: {
+        title: '深圳崖山科技有限公司 - 全栈开发工程师',
+        description: '深圳崖山科技有限公司(简称:崖山科技)是由深圳计算科学研究院孵化，并由YashanDB团队直接组建设立的商业公司，公司坚持全自研工程实践的模式，致力于YashanDB的创新、开发、销售和服务等，打造中国原创的基础软件品牌。',
+        responsibilities: [
+          '负责YashanDB相关产品的全栈开发',
+          '参与产品创新和开发工作',
+          '与YashanDB团队协作技术方案',
+          '为建设中国原创的基础软件品牌贡献力量',
+          '参与销售和服务支持活动'
+        ],
+        technologies: ['全栈开发', 'YashanDB', '数据库技术', '产品开发', '销售与服务'],
+        achievements: [
+          '为YashanDB产品开发和创新做出贡献',
+          '参与建设中国原创的基础软件品牌',
+          '与YashanDB团队有效协作',
+          '参与全面的产品生命周期活动'
+        ],
+        duration: '2025年05月 - 至今'
       }
     },
     // 技术技能详细内容
