@@ -251,7 +251,13 @@ export default {
   background-size: contain !important;
   background-color: #ffffff !important;
   background-position: center !important;
-  padding: 40px;
+  background-repeat: no-repeat !important;
+  padding: 80px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  max-height: 400px;
 }
 
 

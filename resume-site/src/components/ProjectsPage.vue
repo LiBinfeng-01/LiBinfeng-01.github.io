@@ -193,7 +193,8 @@ export default {
           backgroundImage: this.internalProjectImages[index % this.internalProjectImages.length],
           logo: '',
           logoColor: this.colors[(index + 2) % this.colors.length],
-          url: this.projectUrls.internal[skill.category] || ''
+          url: this.projectUrls.internal[skill.category] || '',
+          isLogo: skill.category.includes('Doris') || skill.category.includes('Yashan')
         }
       })
     },
