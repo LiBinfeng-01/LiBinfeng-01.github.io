@@ -34,6 +34,10 @@ export default {
   },
   skills: [
     {
+      category: 'YashanKnows知识库系统',
+      items: ['Node.js', 'Vue.js', 'Golang', 'RAG', '向量数据库', 'YashanDB', 'Markdown解析', '流式处理']
+    },
+    {
       category: 'Doris Outline (SQL Plan Manager)',
       items: ['C++', 'Apache Doris', 'SQL优化', '执行计划管理']
     },
@@ -221,6 +225,21 @@ export default {
     },
     // 内部项目详细内容
     skills: {
+      'YashanKnows知识库系统': {
+        title: 'YashanKnows知识库系统',
+        description: '基于RAG技术实现的全栈知识库系统，利用YashanDB数据库系统的向量和文档存储能力，实现文档和向量的统一存储。主要开发了分块模块和任务管理器，支持流式分块和结构化Markdown文档处理。',
+        details: [
+          '开发了基于开源项目goldmark的分块模块',
+          '将reader改造为stream reader支持流式分块',
+          '实现结构化Markdown文档分块处理',
+          '开发了包含网站和服务端的任务管理器',
+          '使用Node.js和Vue.js构建前端界面',
+          '使用Golang开发服务端API',
+          '充分利用YashanDB的向量和文档存储能力'
+        ],
+        experience: '2024年 - 至今',
+        url: 'https://www.yashandb.com/'
+      },
       'Doris Outline (SQL Plan Manager)': {
         title: 'Doris Outline (SQL Plan Manager)',
         description: '从零到一实现了doris outline(SQL PLAN MANAGER)模块，能够固定执行计划来避免性能出现波动。',

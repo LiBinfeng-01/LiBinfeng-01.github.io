@@ -114,7 +114,7 @@ export default {
       ],
       // 内部项目相关图片
       internalProjectImages: [
-        dorisLogo,dorisLogo,dorisLogo,yashandbLogo,yashandbLogo],
+        yashandbLogo,dorisLogo,dorisLogo,dorisLogo,yashandbLogo,yashandbLogo],
       // 开源项目相关图片
       openSourceProjectImages: [
         'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop', // 开源贡献  // 社区项目
@@ -131,6 +131,8 @@ export default {
         },
         // 内部项目URL
         internal: {
+          'YashanKnows知识库系统': 'https://www.yashandb.com/',
+          'YashanKnows Knowledge Base System': 'https://www.yashandb.com/',
           'Doris Outline (SQL Plan Manager)': 'https://doris.apache.org/zh-CN/docs/query-acceleration/outline/outline-overview',
           'Doris数据库优化器Hints模块': 'https://doris.apache.org/zh-CN/docs/query-acceleration/hints/hints-overview',
           'Doris Database Optimizer Hints Module': 'https://doris.apache.org/docs/query-acceleration/hints/hints-overview',

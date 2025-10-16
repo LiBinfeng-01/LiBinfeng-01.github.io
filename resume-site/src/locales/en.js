@@ -34,6 +34,10 @@ export default {
   },
   skills: [
     {
+      category: 'YashanKnows Knowledge Base System',
+      items: ['Node.js', 'Vue.js', 'Golang', 'RAG', 'Vector Database', 'YashanDB', 'Markdown Parsing', 'Stream Processing']
+    },
+    {
       category: 'Doris Outline (SQL Plan Manager)',
       items: ['C++', 'Apache Doris', 'SQL Optimization', 'Execution Plan Management']
     },
@@ -226,6 +230,21 @@ export default {
     },
     // Internal projects detailed content
     skills: {
+      'YashanKnows Knowledge Base System': {
+        title: 'YashanKnows Knowledge Base System',
+        description: 'A full-stack knowledge base system implemented using RAG technology, leveraging YashanDB database system\'s vector and document storage capabilities to achieve unified storage of documents and vectors. Mainly developed the chunking module and task manager, supporting streaming chunking and structured Markdown document processing.',
+        details: [
+          'Developed chunking module based on open source project goldmark',
+          'Transformed reader into stream reader to support streaming chunking',
+          'Implemented structured Markdown document chunking processing',
+          'Developed task manager including website and server-side components',
+          'Built frontend interface using Node.js and Vue.js',
+          'Developed server-side API using Golang',
+          'Fully utilized YashanDB\'s vector and document storage capabilities'
+        ],
+        experience: '2024 - Present',
+        url: 'https://www.yashandb.com/'
+      },
       'Doris Outline (SQL Plan Manager)': {
         title: 'Doris Outline (SQL Plan Manager)',
         description: 'Implemented the Doris Outline module from scratch to fix execution plans and avoid performance fluctuations.',
